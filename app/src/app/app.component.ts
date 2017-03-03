@@ -10,17 +10,21 @@ import { MenuPage } from '../pages/menu/menu';
 })
 export class MyApp {
   rootPage = MenuPage;
+  config: Array<any> = [{
+    sounds: 'assets/files/sounds',
+    images: 'assets/files/images'
+  }];
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-
       if (location.protocol != 'http:') {
         StatusBar.styleDefault();
         Splashscreen.hide();
         BackgroundMode.enable();
       }
     });
+    // Okay, so the platform is ready and our plugins are available.
+    // Here you can do any higher level native things you might need.
+
   }
 }
