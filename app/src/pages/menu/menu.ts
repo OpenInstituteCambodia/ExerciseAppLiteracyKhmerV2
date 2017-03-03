@@ -16,8 +16,6 @@ export class MenuPage {
   public menuTitle = 'ជីវវិទ្យា​ ថ្នាក់​ទី​១២';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log(this.navParams.get('menuID'));
-
     if (typeof this.navParams.get('menuID') == 'undefined') {
       this.menuID = 'root';
     } else {
