@@ -7,12 +7,96 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>menu</ion-title>
+    <ion-title>Biography For K12</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+  <!-- ROOT -->
+    <ion-grid *ngIf="menuID == 'root'">
+      <ion-row wrap>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('L1')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('L2')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('L3')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៣
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('L4')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៤
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('L5')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៥
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('L6')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៦
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('L7')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៧
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('L8')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៨
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END ROOT -->
 </ion-content>

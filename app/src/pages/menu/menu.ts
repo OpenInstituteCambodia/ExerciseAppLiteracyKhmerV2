@@ -12,11 +12,13 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'menu.html'
 })
 export class MenuPage {
+  public menuID;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
+    this.menuID = 'root';
   }
 
 }
