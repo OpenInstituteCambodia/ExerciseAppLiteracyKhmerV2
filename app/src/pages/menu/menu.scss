@@ -52,4 +52,18 @@ page-menu {
       }
     }
   }
+
+  $start_sec: 0;
+  $floating_point: '.';
+  @for $i from 1 through 5 {
+    .animated:nth-child(#{$i}) {
+      animation-delay: #{$start_sec}#{$floating_point}#{$i}s !important;
+      animation-duration: 1s !important;
+      // -vendor-animation-iteration-count: infinite !important;
+    }
+    @if $i == 9 {
+      $start_sec: 1;
+    }
+  }
+
 }
