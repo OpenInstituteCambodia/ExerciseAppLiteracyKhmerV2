@@ -14,15 +14,24 @@ import { NavController, NavParams } from 'ionic-angular';
 export class MenuPage {
   public menuID;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(this.navParams.get('menuID'));
+    if (typeof this.navParams.get('menuID') == 'undefined') {
+      this.menuID = 'root';
+    } else {
+      this.menuID = this.navParams.get('menuID');
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
-    this.menuID = 'root';
   }
 
   public menu(id) {
-    console.log(id);
+    this.navCtrl.push(
+      MenuPage, {
+        menuID: id
+    });
   }
 
 }

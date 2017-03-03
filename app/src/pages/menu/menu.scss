@@ -1,19 +1,28 @@
 page-menu {
-  [ion-button] {
-    height: 100px;
-    font-size: 2em;
-
-    span.button-inner {
-      display: block;
-      margin-top: 20px;
-
-      .text {
-        display: block;
-      }
-      .number {
-        display: block;
-        margin-top: 10px;
-      }
+  [xela] {
+    [width-100] {
+      -webkit-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100;
+      max-width: 100%;
     }
-  }
+    [ion-button] {
+      height: 115px;
+      font-size: 1.8em;
+
+      span.button-inner {
+        display: block;
+        margin-top: 30px;
+
+        .text {
+          display: block;
+        }
+        .number {
+          display: block;
+          margin-top: 12px;
+          font-size: 1em;
+        }
+      }
+    } // [ion-button]
+  } // [xela]
 }
