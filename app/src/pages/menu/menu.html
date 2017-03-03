@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>ជីវវិទ្យា​ ថ្នាក់​ទី​១២</ion-title>
+    <ion-title>{{menuTitle}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,7 +9,7 @@
     <ion-grid *ngIf="menuID == 'root'">
       <ion-row wrap>
         <ion-col width-50 >
-          <button ion-button block (click)="menu('C1')">
+          <button ion-button block (click)="menu('C1', 'ជំពូក ១')">
             <div class="text">
               ជំពូក
             </div>
@@ -19,7 +19,7 @@
           </button>
         </ion-col>
         <ion-col width-50 >
-          <button ion-button block (click)="menu('C2')">
+          <button ion-button block (click)="menu('C2', 'ជំពូក ២')">
             <div class="text">
               ជំពូក
             </div>
@@ -29,7 +29,7 @@
           </button>
         </ion-col>
         <ion-col width-50 >
-          <button ion-button block (click)="menu('C3')">
+          <button ion-button block (click)="menu('C3', 'ជំពូក ៣')">
             <div class="text">
               ជំពូក
             </div>
@@ -39,7 +39,7 @@
           </button>
         </ion-col>
         <ion-col width-50 >
-          <button ion-button block (click)="menu('C4')">
+          <button ion-button block (click)="menu('C4', 'ជំពូក ៤')">
             <div class="text">
               ជំពូក
             </div>
@@ -49,7 +49,7 @@
           </button>
         </ion-col>
         <ion-col width-50 >
-          <button ion-button block (click)="menu('C5')">
+          <button ion-button block (click)="menu('C5', 'ជំពូក ៥')">
             <div class="text">
               ជំពូក
             </div>
@@ -59,7 +59,7 @@
           </button>
         </ion-col>
         <ion-col width-50 >
-          <button ion-button block (click)="menu('C6')">
+          <button ion-button block (click)="menu('C6', 'ជំពូក ៦')">
             <div class="text">
               ជំពូក
             </div>
@@ -69,7 +69,7 @@
           </button>
         </ion-col>
         <ion-col width-50 >
-          <button ion-button block (click)="menu('C7')">
+          <button ion-button block (click)="menu('C7', 'ជំពូក ៧')">
             <div class="text">
               ជំពូក
             </div>
@@ -79,7 +79,7 @@
           </button>
         </ion-col>
         <ion-col width-50 >
-          <button ion-button block (click)="menu('C8')">
+          <button ion-button block (click)="menu('C8', 'ជំពូក ៨')">
             <div class="text">
               ជំពូក
             </div>

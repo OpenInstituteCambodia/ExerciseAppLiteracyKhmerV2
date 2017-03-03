@@ -13,24 +13,32 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MenuPage {
   public menuID;
+  public menuTitle = 'ជីវវិទ្យា​ ថ្នាក់​ទី​១២';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log(this.navParams.get('menuID'));
+
     if (typeof this.navParams.get('menuID') == 'undefined') {
       this.menuID = 'root';
     } else {
       this.menuID = this.navParams.get('menuID');
     }
+
+    if (typeof this.navParams.get('title') != 'undefined') {
+      this.menuTitle = this.navParams.get('title');
+    }
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
   }
 
-  public menu(id) {
+  public menu(id, title) {
     this.navCtrl.push(
       MenuPage, {
-        menuID: id
+        menuID: id,
+        title: title
     });
   }
 
