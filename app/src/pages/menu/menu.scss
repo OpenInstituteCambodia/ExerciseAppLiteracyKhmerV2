@@ -11,6 +11,13 @@ page-menu {
       flex: 0 0 100;
       max-width: 100%;
 
+      &[menu-header] {
+        text-align: center;
+        font-size: 2em;
+        padding: 10px 0;
+        max-width: 70%;
+        margin: 0 auto;
+      }
     }
     [ion-button] {
       height: 110px;
