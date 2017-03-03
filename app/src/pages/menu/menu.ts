@@ -21,4 +21,8 @@ export class MenuPage {
     this.menuID = 'root';
   }
 
+  public menu(id) {
+    console.log(id);
+  }
+
 }
