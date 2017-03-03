@@ -23,8 +23,12 @@ export class MyApp {
         BackgroundMode.enable();
       }
     });
+    // Storage Configuration
+    let storage = window.localStorage;
+
     // Okay, so the platform is ready and our plugins are available.
     // Here you can do any higher level native things you might need.
 
+    
   }
 }
