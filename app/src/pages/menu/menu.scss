@@ -31,4 +31,18 @@ page-menu {
       }
     } // [ion-button]
   } // [xela]
+
+  ion-toolbar {
+    text-align: center;
+
+    [ion-button] {
+      font-size: 2em;
+      &:last-child {
+        margin-left: 50px;
+      }
+      &:first-child {
+        margin-right: 50px;
+      }
+    }
+  }
 }
