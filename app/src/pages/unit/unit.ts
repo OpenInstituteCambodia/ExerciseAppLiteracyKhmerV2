@@ -35,6 +35,7 @@ export class UnitPage {
         return this.playSound('player2', this.soundPath+'/Msg Question 2.mp3');
       }).then((player2) => {
         console.log(player2);
+        this.stopSound();
       })
       .catch((err) => { console.log(err); });
     }, this.delay);
@@ -43,6 +44,7 @@ export class UnitPage {
   private playSound(id, filename):Promise<any> {
     return new Promise((resolve, reject) => {
       console.log('%cplaySound(' + id + ', ' + filename + '):Promise<any>', 'font-size: 14px;');
+      this.playbackURI.push(id);
       NativeAudio.preloadComplex(id, filename, 1, 1, 0)
         .then((initialized) => {
           console.log('playSound(id, filename):Promise<any> {}: Playback initialized: ', initialized);
@@ -63,6 +65,17 @@ export class UnitPage {
         reject(new Error('playSound(id, filename):Promise<any> {}: Promise Rejected: ' + error));
       });
     });
+  }
+
+  private stopSound() {
+    this.playbackURI.forEach((uri) => {
+      console.log(uri);
+    });
+    // NativeAudio.stop('').then((suc) => {
+    //
+    // }).catch((err) => {
+    //
+    // });
   }
 
 }
