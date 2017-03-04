@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { UnitPage } from '../unit/unit';
 
 /*
   Generated class for the Menu page.
@@ -38,5 +39,13 @@ export class MenuPage {
         menuID: id,
         title: title
     });
+  }
+
+  public unit(id) {
+    this.navCtrl.push(
+      UnitPage, {
+        unitID: id
+      }
+    );
   }
 }
