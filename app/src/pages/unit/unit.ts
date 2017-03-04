@@ -40,13 +40,11 @@ export class UnitPage {
       NativeAudio.preloadComplex(id, filename, 1, 1, 0)
         .then((initialized) => {
           console.log('playSound(id, filename):Promise<any> {}: Playback initialized: ', initialized);
-          // return NativeAudio.play(id, (done) => {return done});
-          let d = new Promise((rs, re) => {
+          return new Promise((rs, re) => {
             NativeAudio.play(id, (done) => {
               rs(done);
             });
           });
-          return d;
         })
         .then((finished) => {
           console.log('playSound(id, filename):Promise<any> {}: Playback finished: ', finished);
