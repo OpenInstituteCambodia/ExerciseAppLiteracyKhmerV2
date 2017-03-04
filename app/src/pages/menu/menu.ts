@@ -39,15 +39,4 @@ export class MenuPage {
         title: title
     });
   }
-
-  // private test():Promise<boolean> {
-  //   let q = new Promise<boolean>(
-  //     (resolve, reject) => {
-  //       return true;
-  //     }
-  //   );
-  //
-  //   return q;
-  // }
-
 }
