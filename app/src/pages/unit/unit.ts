@@ -9,7 +9,13 @@ import { NativeAudio } from 'ionic-native';
 export class UnitPage {
   public unitID;
   public soundPath;
+  private playbackURI = [];
+
+  // The following Variable can be editable
+  // --------------------------------------
   private delay = 500; // Delay in milliseconds
+  // --------------------------------------
+  // Please don't do stupid stuff out side of this area ;)
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     let storage = window.localStorage;
