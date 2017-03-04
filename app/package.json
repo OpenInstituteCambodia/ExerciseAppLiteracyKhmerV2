@@ -38,8 +38,9 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-nativeaudio"
   ],
-  "cordovaPlatforms": [],
+  "cordovaPlatforms": ["android"],
   "description": "Biography For K12: An Ionic project"
 }
