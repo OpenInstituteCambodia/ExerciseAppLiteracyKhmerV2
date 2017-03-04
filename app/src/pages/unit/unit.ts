@@ -24,20 +24,19 @@ export class UnitPage {
     console.log('soundPath: ', this.soundPath);
 
     setTimeout(() => {
-      this.playSound('player1', this.soundPath+'/Msg Question 1.mp3').then(
-        (suc) => {
-          console.log(suc);
-        }
-      ).catch(
-        (err) => {
-          console.log(err);
-        }
-      );
+      this.playSound('player1', this.soundPath+'/Msg Question 1.mp3').then((player1) => {
+        console.log(player1);
+        return this.playSound('player2', this.soundPath+'/Msg Question 2.mp3');
+      }).then((player2) => {
+        console.log(player2);
+      })
+      .catch((err) => { console.log(err); });
     }, this.delay);
   }
 
   private playSound(id, filename):Promise<any> {
     return new Promise((resolve, reject) => {
+      console.log('%cplaySound(' + id + ', ' + filename + '):Promise<any>', 'font-size: 14px;');
       NativeAudio.preloadComplex(id, filename, 1, 1, 0)
         .then((initialized) => {
           console.log('playSound(id, filename):Promise<any> {}: Playback initialized: ', initialized);
@@ -59,7 +58,6 @@ export class UnitPage {
       .catch((error) => {
         reject(new Error('playSound(id, filename):Promise<any> {}: Promise Rejected: ' + error));
       });
-
     });
   }
 
