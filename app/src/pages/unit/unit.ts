@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MediaPlugin } from 'ionic-native';
+import { NativeAudio } from 'ionic-native';
 
 /*
   Generated class for the Unit page.
@@ -30,7 +30,7 @@ export class UnitPage {
     console.log('soundPath: ', this.soundPath);
 
     setTimeout(() => {
-      this.playSound(this.soundPath+'/Msg Question 1.mp3').then(
+      this.playSound('player1', this.soundPath+'/Msg Question 1.mp3').then(
         (suc) => {
           console.log(suc);
         }
@@ -42,32 +42,31 @@ export class UnitPage {
     }, this.delay);
   }
 
-  private playSound(array):Promise<any> {
-    console.group('private playSound(array):Promise<any>');
-      let deferred = new Promise((resolve, reject) => {
-        if (location.protocol != 'http:') {
-          let media = new MediaPlugin(array);
-            media.init.then((suc) => {
-              let msg = 'playSound(): -> Playback Success, ' + suc;
-
-              console.log(msg);
-              resolve(msg);
-            }).catch((err) => {
-              let msg = 'playSound(): -> Playback Error: ' + err;
-
-              console.log(msg);
-              reject(msg);
+  private playSound(id, filename):Promise<any> {
+    return new Promise((resolve, reject) => {
+      NativeAudio.preloadComplex(id, filename, 1, 1, 0)
+        .then((initialized) => {
+          console.log('playSound(id, filename):Promise<any> {}: Playback initialized: ', initialized);
+          // return NativeAudio.play(id, (done) => {return done});
+          let d = new Promise((rs, re) => {
+            NativeAudio.play(id, (done) => {
+              rs(done);
             });
-        }else {
-          let msg = 'playSound(): -> Playback is not support on browswer.';
-
-          console.log(msg);
-          reject(msg);
-        }
+          });
+          return d;
+        })
+        .then((finished) => {
+          console.log('playSound(id, filename):Promise<any> {}: Playback finished: ', finished);
+          return NativeAudio.unload(id);
+        })
+        .then((completed) => {
+          resolve('playSound(id, filename):Promise<any> {}: Promise Resolved: ' + completed);
+        })
+      .catch((error) => {
+        reject(new Error('playSound(id, filename):Promise<any> {}: Promise Rejected: ' + error));
       });
-      console.log('playSound(): -> Promise Status', deferred);
-    console.groupEnd();
-    return deferred;
+
+    });
   }
 
 }
