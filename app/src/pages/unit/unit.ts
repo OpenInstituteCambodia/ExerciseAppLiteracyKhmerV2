@@ -40,7 +40,7 @@ export class UnitPage {
   }
 
   ionViewWillLeave() {
-    console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound");
+    console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
     this.stopSound();
   }
 
@@ -79,6 +79,10 @@ export class UnitPage {
   }
 
   private stopSound() {
+    if (location.protocol == 'http:') {
+      return 'playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.';
+    }
+
     this.playbackURI.forEach((item) => {
       NativeAudio.stop(item).then((suc) => {
         let index = this.playbackURI.indexOf(item);
