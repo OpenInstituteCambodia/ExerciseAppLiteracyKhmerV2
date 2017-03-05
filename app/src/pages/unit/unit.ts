@@ -28,20 +28,20 @@ export class UnitPage {
     console.log('%cUnit ID: ' + this.unitID, 'font-size: 18px;');
 
     setTimeout(() => {
-      this.playSound('player1', this.soundPath+'/Msg Question 1.mp3').then((player1) => {
-        console.log(player1);
-        return this.playSound('player2', this.soundPath+'/Msg Question 2.mp3');
-      }).then((player2) => {
-        console.log(player2);
-        this.stopSound();
-      })
+      this.playSound('player1', this.soundPath+'/Msg Question 1.mp3')
+        .then((player1) => {
+          console.log(player1);
+          return this.playSound('player2', this.soundPath+'/Msg Question 2.mp3');
+        }).then((player2) => {
+          console.log(player2);
+        })
       .catch((err) => { console.log(err); });
     }, this.delay);
   }
 
   ionViewWillLeave() {
     console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
-    this.stopSound();
+    this.stopSoundComplex();
   }
 
   private playSound(id, filename):Promise<any> {
@@ -78,7 +78,7 @@ export class UnitPage {
     });
   }
 
-  private stopSound() {
+  private stopSoundComplex() {
     if (location.protocol == 'http:') {
       return 'playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.';
     }
@@ -88,11 +88,24 @@ export class UnitPage {
         let index = this.playbackURI.indexOf(item);
         this.playbackURI.splice(index, 1);
         NativeAudio.unload(item);
-        console.log("stopSound(): Stopped and Unloaded: ", suc);
+        console.log("stopSoundComplex(): Stopped and Unloaded: ", suc);
       }).catch((err) => {
-        console.log("stopSound(): Something went wrong: ", err);
+        console.log("stopSoundComplex(): Something went wrong: ", err);
       });
-    })
+    });
+  }
+
+  private stopSound(uri):Promise<any> {
+    return new Promise((resolve, reject) => {
+      NativeAudio.stop(uri).then((suc) => {
+        return NativeAudio.unload(uri);
+      }).then((unloaded) => {
+        resolve('stopSound(): Stopped and Unloaded' + unloaded);
+      })
+      .catch((err) => {
+        reject(new Error("stopSound(): Something went wrong: " + err));
+      });
+    });
   }
 
 }
