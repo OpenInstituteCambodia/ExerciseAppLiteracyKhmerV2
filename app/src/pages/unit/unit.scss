@@ -14,9 +14,19 @@ page-unit {
       height: 100%;
       [unit-view-head] {
         height: 50%;
+        ion-card {
+          height: 95%;
+          border-radius: 5px;
+          margin-top: 0;
+
+          img {
+            height: 100%;
+          }
+        }
       }
       [unit-view-options] {
         height: 50%;
+        padding: 0 15px;
 
         &[two-by-two] {
           .col {
@@ -30,7 +40,7 @@ page-unit {
 
         &[one-by-four] {
           .col {
-            padding: 0 5px;
+            padding: 0;
             [ion-button] {
               font-size: 2.4em;
               height: 100%;
