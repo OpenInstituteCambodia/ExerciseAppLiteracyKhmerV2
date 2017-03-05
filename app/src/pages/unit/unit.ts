@@ -41,6 +41,10 @@ export class UnitPage {
     }, this.delay);
   }
 
+  ionViewWillLeave() {
+    this.stopSound();
+  }
+
   private playSound(id, filename):Promise<any> {
     return new Promise((resolve, reject) => {
       console.log('%cplaySound(' + id + ', ' + filename + '):Promise<any>', 'font-size: 14px;');
@@ -56,6 +60,8 @@ export class UnitPage {
         })
         .then((finished) => {
           console.log('playSound(id, filename):Promise<any> {}: Playback finished: ', finished);
+          let index = this.playbackURI.indexOf(id);
+          this.playbackURI.splice(index, 1);
           return NativeAudio.unload(id);
         })
         .then((completed) => {
@@ -68,14 +74,16 @@ export class UnitPage {
   }
 
   private stopSound() {
-    this.playbackURI.forEach((uri) => {
-      console.log(uri);
-    });
-    // NativeAudio.stop('').then((suc) => {
-    //
-    // }).catch((err) => {
-    //
-    // });
+    this.playbackURI.forEach((item) => {
+      NativeAudio.stop(item).then((suc) => {
+        let index = this.playbackURI.indexOf(item);
+        this.playbackURI.splice(index, 1);
+        NativeAudio.unload(item);
+        console.log(suc);
+      }).catch((err) => {
+        console.log(err);
+      });
+    })
   }
 
 }
