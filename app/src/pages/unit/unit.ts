@@ -79,9 +79,9 @@ export class UnitPage {
         let index = this.playbackURI.indexOf(item);
         this.playbackURI.splice(index, 1);
         NativeAudio.unload(item);
-        console.log(suc);
+        console.log("stopSound(): Stopped and Unloaded: ", suc);
       }).catch((err) => {
-        console.log(err);
+        console.log("stopSound(): Something went wrong: ", err);
       });
     })
   }
