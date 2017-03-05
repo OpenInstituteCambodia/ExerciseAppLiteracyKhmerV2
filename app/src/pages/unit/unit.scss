@@ -12,4 +12,27 @@ page-unit {
   [unit-content] {
 
   }
+
+  [unit-footer] {
+    ion-toolbar {
+      text-align: center;
+
+      [ion-button] {
+        font-size: 1.6em;
+        &:last-child {
+          margin-left: 40px;
+        }
+        &:first-child {
+          margin-right: 40px;
+        }
+      }
+    }
+    .toolbar-background {
+      border-color: transparent;
+      background: transparent;
+    }
+    &:before {
+      background-image: none;
+    }
+  }
 }
