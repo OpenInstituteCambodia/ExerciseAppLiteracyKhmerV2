@@ -13,7 +13,7 @@ export class UnitPage {
 
   // The following Variable can be editable
   // --------------------------------------
-  private delay = 500; // Delay in milliseconds
+  /* Delay in milliseconds */ private delay = 500;
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
@@ -25,9 +25,7 @@ export class UnitPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UnitPage');
     console.log('%cUnit ID: ' + this.unitID, 'font-size: 18px;');
-    console.log('soundPath: ', this.soundPath);
 
     setTimeout(() => {
       this.playSound('player1', this.soundPath+'/Msg Question 1.mp3').then((player1) => {
