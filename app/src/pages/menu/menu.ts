@@ -14,7 +14,12 @@ import { UnitPage } from '../unit/unit';
 })
 export class MenuPage {
   public menuID;
-  public menuTitle = 'ជីវវិទ្យា​ ថ្នាក់​ទី​១២';
+
+  // The following Variable can be editable
+  // --------------------------------------
+  /* Main Menu Title */ public menuTitle = 'ជីវវិទ្យា​ ថ្នាក់​ទី​១២';
+  // --------------------------------------
+  // Please don't do stupid stuff out side of this area ;)
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     if (typeof this.navParams.get('menuID') == 'undefined') {
@@ -30,7 +35,7 @@ export class MenuPage {
   }
 
   ionViewDidLoad() {
-    
+
   }
 
   public menu(id, title) {
