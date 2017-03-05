@@ -7,9 +7,6 @@ import { NativeAudio } from 'ionic-native';
   templateUrl: 'unit.html'
 })
 export class UnitPage {
-  public unitID;
-  public soundPath;
-  private playbackURI = [];
 
   // The following Variable can be editable
   // --------------------------------------
@@ -17,6 +14,9 @@ export class UnitPage {
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
+  public unitID;
+  public soundPath;
+  private playbackURI = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     let storage = window.localStorage;
 

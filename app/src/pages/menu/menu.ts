@@ -13,7 +13,6 @@ import { UnitPage } from '../unit/unit';
   templateUrl: 'menu.html'
 })
 export class MenuPage {
-  public menuID;
 
   // The following Variable can be editable
   // --------------------------------------
@@ -21,6 +20,7 @@ export class MenuPage {
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
+  public menuID;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     typeof this.navParams.get('menuID') == 'undefined' ? this.menuID = 'root' : this.menuID = this.navParams.get('menuID');
     typeof this.navParams.get('title') != 'undefined' ? this.menuTitle = this.navParams.get('title') : true;
