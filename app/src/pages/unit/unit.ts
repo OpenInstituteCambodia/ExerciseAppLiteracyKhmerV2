@@ -24,6 +24,17 @@ export class UnitPage {
     this.soundPath = storage.getItem('soundPath');
   }
 
+  // The following Function can be editable
+  // --------------------------------------
+  /* Delay in milliseconds */
+  private replaySound():Promise<any> {
+    return new Promise((resolve, reject) => {
+
+    });
+  }
+  // --------------------------------------
+  // Please don't do stupid stuff out side of this area ;)
+
   ionViewDidLoad() {
     console.log('%cUnit ID: ' + this.unitID, 'font-size: 18px;');
 
@@ -104,12 +115,6 @@ export class UnitPage {
       }).catch((err) => {
         console.log("stopSoundComplex(): Something went wrong: ", err);
       });
-    });
-  }
-
-  private replaySound():Promise<any> {
-    return new Promise((resolve, reject) => {
-      
     });
   }
 
