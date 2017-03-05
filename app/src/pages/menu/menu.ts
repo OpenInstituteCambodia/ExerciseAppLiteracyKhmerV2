@@ -24,12 +24,10 @@ export class MenuPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     typeof this.navParams.get('menuID') == 'undefined' ? this.menuID = 'root' : this.menuID = this.navParams.get('menuID');
     typeof this.navParams.get('title') != 'undefined' ? this.menuTitle = this.navParams.get('title') : true;
-
-    console.log('%cMenu ID: ' + this.menuID ,'font-size: 18px;');
   }
 
   ionViewDidLoad() {
-
+    console.log('%cMenu ID: ' + this.menuID ,'font-size: 18px;');
   }
 
   public menu(id, title) {

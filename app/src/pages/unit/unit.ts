@@ -40,10 +40,17 @@ export class UnitPage {
   }
 
   ionViewWillLeave() {
+    console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound");
     this.stopSound();
   }
 
   private playSound(id, filename):Promise<any> {
+    if (location.protocol == 'http:') {
+      return new Promise((gg, ff) => {
+        ff('playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.');
+      });
+    }
+
     return new Promise((resolve, reject) => {
       console.log('%cplaySound(' + id + ', ' + filename + '):Promise<any>', 'font-size: 14px;');
       this.playbackURI.push(id);
