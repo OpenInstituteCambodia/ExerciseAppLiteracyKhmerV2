@@ -7,7 +7,7 @@ page-unit {
     &:after {
       background-image: none;
     }
-  }
+  } // [unit-header]
 
   [unit-content] {
     [unit-view] {
@@ -18,34 +18,58 @@ page-unit {
       [unit-view-options] {
         height: 50%;
 
-        .col {
-          padding: 0 5px;
-          [ion-button] {
-            font-size: 2.4em;
+        &[two-by-two] {
+          .col {
+            height: 50%;
+            [ion-button] {
+              height: 100%;
+              font-size: 4em;
+            }
+          }
+        } // &[two-by-two]
+
+        &[one-by-four] {
+          .col {
+            padding: 0 5px;
+            [ion-button] {
+              font-size: 2.4em;
+              height: 100%;
+            }
+          }
+          .col:nth-child(1):nth-last-child(1) {
             height: 100%;
           }
+          .col:nth-child(1):nth-last-child(2),
+          .col:nth-child(2):nth-last-child(1) {
+            height: 48%;
+          }
+          .col:nth-child(1):nth-last-child(3),
+          .col:nth-child(2):nth-last-child(2),
+          .col:nth-child(3):nth-last-child(1) {
+            height: 30%;
+          }
+          .col:nth-child(1):nth-last-child(4),
+          .col:nth-child(2):nth-last-child(3),
+          .col:nth-child(3):nth-last-child(2),
+          .col:nth-child(4):nth-last-child(1) {
+            height: 22%;
+          }
+        } // &[one-by-four]
+
+        &[borderless] {
+          .col {
+            padding: 0;
+            [ion-button] {
+              margin: 0;
+              border: 0;
+              border-radius: 0;
+              box-shadow: none;
+            }
+          }
         }
-        .col:nth-child(1):nth-last-child(1) {
-          height: 100%;
-        }
-        .col:nth-child(1):nth-last-child(2),
-        .col:nth-child(2):nth-last-child(1) {
-          height: 48%;
-        }
-        .col:nth-child(1):nth-last-child(3),
-        .col:nth-child(2):nth-last-child(2),
-        .col:nth-child(3):nth-last-child(1) {
-          height: 30%;
-        }
-        .col:nth-child(1):nth-last-child(4),
-        .col:nth-child(2):nth-last-child(3),
-        .col:nth-child(3):nth-last-child(2),
-        .col:nth-child(4):nth-last-child(1) {
-          height: 22%;
-        }
-      }
-    }
-  }
+      } // [unit-view-options]
+    } // [unit-view]
+  } // [unit-content]
 
   [unit-footer] {
     ion-toolbar {
@@ -68,7 +92,7 @@ page-unit {
     &:before {
       background-image: none;
     }
-  }
+  } // [unit-footer]
 
   [width-100] {
     -webkit-flex: 0 0 100%;
