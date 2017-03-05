@@ -78,6 +78,18 @@ export class UnitPage {
     });
   }
 
+  private stopSound(uri):Promise<any> {
+    return new Promise((resolve, reject) => {
+      NativeAudio.stop(uri).then((suc) => {
+        return NativeAudio.unload(uri);
+      }).then((unloaded) => {
+        resolve('stopSound(): Stopped and Unloaded' + unloaded);
+      }).catch((err) => {
+        reject(new Error("stopSound(): Something went wrong: " + err));
+      });
+    });
+  }
+
   private stopSoundComplex() {
     if (location.protocol == 'http:') {
       return 'playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.';
@@ -95,15 +107,9 @@ export class UnitPage {
     });
   }
 
-  private stopSound(uri):Promise<any> {
+  private replaySound():Promise<any> {
     return new Promise((resolve, reject) => {
-      NativeAudio.stop(uri).then((suc) => {
-        return NativeAudio.unload(uri);
-      }).then((unloaded) => {
-        resolve('stopSound(): Stopped and Unloaded' + unloaded);
-      }).catch((err) => {
-        reject(new Error("stopSound(): Something went wrong: " + err));
-      });
+      
     });
   }
 
