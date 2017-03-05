@@ -101,8 +101,7 @@ export class UnitPage {
         return NativeAudio.unload(uri);
       }).then((unloaded) => {
         resolve('stopSound(): Stopped and Unloaded' + unloaded);
-      })
-      .catch((err) => {
+      }).catch((err) => {
         reject(new Error("stopSound(): Something went wrong: " + err));
       });
     });
