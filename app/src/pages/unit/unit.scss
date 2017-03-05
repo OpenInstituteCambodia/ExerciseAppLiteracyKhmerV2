@@ -1,21 +1,15 @@
 page-unit {
-  [width-100] {
-    -webkit-flex: 0 0 100%;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100;
-    max-width: 100%;
-
-    &.col {
-      padding: 0 5px;
-      &[viewer] {
-        min-height: 50%;
-      }
+  [unit-header] {
+    .toolbar-background {
+      border-color: transparent;
+      background: transparent;
     }
-
-
-    [ion-button] {
-      min-height: 50px;
-      font-size: 1.6em;
+    &:after {
+      background-image: none;
     }
+  }
+
+  [unit-content] {
+
   }
 }
