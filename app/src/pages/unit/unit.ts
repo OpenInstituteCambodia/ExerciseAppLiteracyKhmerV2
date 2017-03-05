@@ -26,7 +26,7 @@ export class UnitPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UnitPage');
-    console.log('Unit ID: ', this.unitID);
+    console.log('%cUnit ID: ' + this.unitID, 'font-size: 18px;');
     console.log('soundPath: ', this.soundPath);
 
     setTimeout(() => {

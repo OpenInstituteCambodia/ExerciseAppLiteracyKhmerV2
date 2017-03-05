@@ -26,7 +26,7 @@ export class MenuPage {
     if (typeof this.navParams.get('title') != 'undefined') {
       this.menuTitle = this.navParams.get('title');
     }
-    console.log('Menu ID: ', this.menuID);
+    console.log('%cMenu ID: ' + this.menuID ,'font-size: 18px;');
   }
 
   ionViewDidLoad() {
