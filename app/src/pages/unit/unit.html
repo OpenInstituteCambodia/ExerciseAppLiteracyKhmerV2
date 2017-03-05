@@ -11,18 +11,45 @@
 </ion-header>
 
 <ion-content unit-content>
-
+  <ion-grid unit-view>
+    <ion-row unit-view-head wrap>
+      <ion-col width-100>
+      </ion-col>
+    </ion-row>
+    <ion-row unit-view-options wrap>
+      <ion-col width-100>
+        <button ion-button block>
+          1
+        </button>
+      </ion-col>
+      <ion-col width-100>
+        <button ion-button block>
+          2
+        </button>
+      </ion-col>
+      <ion-col width-100>
+        <button ion-button block>
+          3
+        </button>
+      </ion-col>
+      <ion-col width-100>
+        <button ion-button block>
+          4
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <ion-footer unit-footer>
   <ion-toolbar>
-    <button ion-button clear (click)="exit()">
+    <button ion-button clear navPop>
       <ion-icon name="arrow-back"></ion-icon>
     </button>
-    <button ion-button clear (click)="exit()">
+    <button ion-button clear (click)="replayUnit()">
       <ion-icon name="refresh"></ion-icon>
     </button>
-    <button ion-button clear (click)="play()">
+    <button ion-button clear (click)="exit()">
       <ion-icon name="power"></ion-icon>
     </button>
   </ion-toolbar>
