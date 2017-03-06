@@ -111,6 +111,11 @@ page-unit {
       [helper-view-content] {
         font-size: 1.4em;
         text-align: justify;
+
+        [ion-button] {
+          padding: 30px 0;
+          font-size: 1.4em;
+        }
       }
     } // [helper-view]
   } // [unit-content]
