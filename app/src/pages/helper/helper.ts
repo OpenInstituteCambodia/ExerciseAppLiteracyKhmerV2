@@ -13,23 +13,16 @@ import { BaseController } from '../../components/base';
 export class HelperPage {
   public unitID;
   public unitNextID;
-  public soundPath;
   private content;
-  private playbackURI = [];
   private isUnitNextAllow = false;
-  private isSoundPlaying = false;
   private playURI;
 
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log('Modal Params: ', this.navParams.get('unitID'))
     this.unitID = this.navParams.get('unitID');
     this.unitNextID = this.navParams.get('unitNextID');
     this.isUnitNextAllow = this.navParams.get('isUnitNextAllow');
     this.playURI = this.navParams.get('playURI');
-
-    let storage = window.localStorage;
-    this.soundPath = storage.getItem('soundPath');
   }
 
   ionViewDidLoad() {

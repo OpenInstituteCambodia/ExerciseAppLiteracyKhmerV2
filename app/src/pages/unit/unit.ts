@@ -19,19 +19,12 @@ export class UnitPage {
 
   public unitID;
   public unitTitle = '';
-  public soundPath;
   private content;
-  private playbackURI = [];
-  private isSoundPlaying = false;
+
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
-    let storage = window.localStorage;
-
     this.unitID = this.navParams.get('unitID');
-    this.soundPath = storage.getItem('soundPath');
-
     typeof this.navParams.get('unitTitle') != 'undefined' ? this.unitTitle = this.navParams.get('unitTitle') : '';
-    console.log("typeof this.navParams.get('isHelperEnable')", typeof this.navParams.get('isHelperEnable'));
   }
 
   // The following Function can be editable
