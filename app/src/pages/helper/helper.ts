@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { MenuPage } from '../menu/menu';
 import { UnitPage } from '../unit/unit';
 
@@ -11,7 +11,7 @@ export class HelperPage {
   public unitID;
   public unitNextID;
   private isUnitNextAllow = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log('Modal Params: ', this.navParams.get('unitID'))
     this.unitID = this.navParams.get('unitID');
     this.unitNextID = this.navParams.get('unitNextID');
@@ -33,11 +33,6 @@ export class HelperPage {
         }
       );
     }
-  }
-
-  dismiss() {
-    let data = { 'foo': 'bar' };
-    this.viewCtrl.dismiss(data);
   }
 
 }
