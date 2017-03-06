@@ -104,6 +104,15 @@ page-unit {
         } // &[borderless]
       } // [unit-view-options]
     } // [unit-view]
+    [helper-view] {
+      [helper-view-head] {
+
+      }
+      [helper-view-content] {
+        font-size: 1.4em;
+        text-align: justify;
+      }
+    } // [helper-view]
   } // [unit-content]
 
   [unit-footer] {
