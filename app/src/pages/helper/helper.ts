@@ -12,8 +12,12 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'helper.html'
 })
 export class HelperPage {
+  public unitID;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log('Modal Params: ', this.navParams.get('unitID'))
+    this.unitID = this.navParams.get('unitID');
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HelperPage');

@@ -1,3 +1,16 @@
 page-helper {
+  [helper-view] {
+    [helper-view-head] {
 
+    }
+    [helper-view-content] {
+      font-size: 1.4em;
+      text-align: justify;
+
+      [ion-button] {
+        padding: 30px 0;
+        font-size: 1.4em;
+      }
+    }
+  } // [helper-view]
 }

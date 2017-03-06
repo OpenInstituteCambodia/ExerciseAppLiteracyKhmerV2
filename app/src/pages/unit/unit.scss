@@ -104,20 +104,6 @@ page-unit {
         } // &[borderless]
       } // [unit-view-options]
     } // [unit-view]
-    [helper-view] {
-      [helper-view-head] {
-
-      }
-      [helper-view-content] {
-        font-size: 1.4em;
-        text-align: justify;
-
-        [ion-button] {
-          padding: 30px 0;
-          font-size: 1.4em;
-        }
-      }
-    } // [helper-view]
   } // [unit-content]
 
   [unit-footer] {
@@ -143,10 +129,4 @@ page-unit {
     }
   } // [unit-footer]
 
-  [width-100] {
-    -webkit-flex: 0 0 100%;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100;
-    max-width: 100%;
-  }
 }

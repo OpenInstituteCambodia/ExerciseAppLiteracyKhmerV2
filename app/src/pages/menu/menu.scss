@@ -6,11 +6,6 @@ page-menu {
       align-content: center !important;
     }
     [width-100] {
-      -webkit-flex: 0 0 100%;
-      -ms-flex: 0 0 100%;
-      flex: 0 0 100;
-      max-width: 100%;
-
       &[menu-header] {
         text-align: center;
         font-size: 2em;

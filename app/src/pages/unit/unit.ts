@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { NativeAudio } from 'ionic-native';
+import { HelperPage } from '../helper/helper';
 
 @Component({
   selector: 'page-unit',
@@ -20,17 +21,14 @@ export class UnitPage {
   public soundPath;
   private content;
   private playbackURI = [];
-  private isUnitNextAllow = false;
   private isSoundPlaying = false;
-  private isHelperEnable = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
     let storage = window.localStorage;
 
     this.unitID = this.navParams.get('unitID');
     this.soundPath = storage.getItem('soundPath');
 
     typeof this.navParams.get('unitTitle') != 'undefined' ? this.unitTitle = this.navParams.get('unitTitle') : '';
-    typeof this.navParams.get('isHelperEnable') != 'undefined' ? this.isHelperEnable = this.navParams.get('isHelperEnable') : '';
     console.log("typeof this.navParams.get('isHelperEnable')", typeof this.navParams.get('isHelperEnable'));
   }
 
@@ -46,22 +44,22 @@ export class UnitPage {
       let playbackURL = this.content['choice_'+choice+'_audio'];
       let statusURL;
 
-      correct == choice ? this.isUnitNextAllow = true : this.isUnitNextAllow = false;
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
       // correct != choice ? this.unitTitle = 'មេរៀន​​ជំនួយ' : this.unitTitle = '';
       // correct != choice ? this.isHelperEnable = true : this.isHelperEnable = false;
 
+      let helperModal;
+      if (this.isHelperAllow) {
+        helperModal = this.modalCtrl.create(
+          HelperPage, {
+            unitID: this.content['unit_id']
+          }
+        );
+      }
+
       this.playSound('choice', playbackURL).then((stage1) => {
         console.log(stage1);
-        if (this.isHelperAllow) {
-          this.navCtrl.push(
-            UnitPage, {
-              unitID: this.unitID,
-              unitTitle: 'មេរៀន​​ជំនួយ',
-              isHelperEnable: true
-            }
-          );
-        }
+        helperModal.present();
         return this.playSound('choice', statusURL);
       }).then((stage2) => {
         console.log(stage2);
@@ -109,9 +107,6 @@ export class UnitPage {
       console.log( "%cChoice 4: "+this.content['choice_4_audio'], 'font-size: 16px;' );
     console.groupEnd();
 
-    if (this.isHelperEnable == true) {
-      return 'ionViewDidLoad(): Unit is in Helper Mode!';
-    }
     setTimeout(() => {
       this.playSound('player1', this.content['audio_1'])
         .then((player1) => {
@@ -125,12 +120,8 @@ export class UnitPage {
   }
 
   ionViewWillLeave() {
-    if (this.isHelperEnable == true) {
-      return 'ionViewWillLeave(): Unit is in Helper Mode!';
-    }else{
-      console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
-      this.stopSoundComplex();
-    }
+    console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
+    this.stopSoundComplex();
   }
 
   private Q(parent, attr) {
@@ -143,11 +134,7 @@ export class UnitPage {
   }
 
   private backToggle(){
-    if(this.isHelperEnable == true) {
-      this.isHelperEnable = false;
-    }else{
-      this.navCtrl.pop();
-    }
+    this.navCtrl.pop();
   }
 
   private playSound(id, filename):Promise<any> {
