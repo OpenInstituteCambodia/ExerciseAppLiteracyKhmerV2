@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { NativeAudio } from 'ionic-native';
 import { HelperPage } from '../helper/helper';
 
@@ -22,7 +22,7 @@ export class UnitPage {
   private content;
   private playbackURI = [];
   private isSoundPlaying = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private alertCtrl: AlertController) {
     let storage = window.localStorage;
 
     this.unitID = this.navParams.get('unitID');
@@ -136,8 +136,25 @@ export class UnitPage {
     return data;
   }
 
-  private backToggle(){
-    this.navCtrl.pop();
+  private backButtonClick(){
+    let confirm = this.alertCtrl.create({
+      title: 'ចាកចេញ​ពីទំព័រនេះ?​',
+      subTitle: '',
+      buttons: [
+        {
+          text: 'បន្តសំនួរ',
+          role: 'calcel'
+        }, {
+          text: 'ចាកចេញ',
+          handler: () => {
+            console.log('exit');
+            this.navCtrl.popToRoot();
+          }
+        }
+      ]
+    });
+    confirm.present();
+
   }
 
   private playSound(id, filename):Promise<any> {
