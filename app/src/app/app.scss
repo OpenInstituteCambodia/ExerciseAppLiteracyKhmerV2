@@ -14,3 +14,16 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+/* khmer */
+@font-face {
+  font-family: 'Hanuman';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Hanuman'), url("../assets/fonts/hanuman.woff2") format('woff2');
+  unicode-range: U+1780-17FF, U+200B-200C, U+25CC;
+}
+
+ion-app {
+  font-family: 'Hanuman' !important;
+}
