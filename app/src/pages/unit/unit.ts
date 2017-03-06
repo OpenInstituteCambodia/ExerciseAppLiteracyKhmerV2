@@ -129,12 +129,13 @@ export class UnitPage {
   }
 
   private Q(parent, attr) {
-    let data = document.querySelector(
-      parent
-    ).getAttribute(attr);
-    typeof data != 'string' ? data = '' : data = data;
-
-    return data;
+    let dom = document;
+    let parentData = dom.querySelector(parent);
+    let arrtData = '';
+    if (parentData != null) {
+      arrtData = parentData.getAttribute(attr);
+    }
+    return arrtData;
   }
 
   private backButtonClick(){
