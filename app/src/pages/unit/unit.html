@@ -12,37 +12,39 @@
 
 <ion-content unit-content>
 
-  <ion-grid id="C1L1Q1" audio-1="Msg Question 1.mp3" audio-2="" unit-view *ngIf="unitID == 'C1L1Q1'">
-    <ion-row unit-view-head wrap>
-      <ion-col width-100>
-        <ion-card>
-          <img src="assets/files/images/C1L1Q1.jpg" alt="">
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row unit-view-options one-by-four wrap>
-      <ion-col width-100>
-        <button ion-button block>
-          មានផ្កា
-        </button>
-      </ion-col>
-      <ion-col width-100>
-        <button ion-button block>
-          មានសំបកការពារ គ្រាប់
-        </button>
-      </ion-col>
-      <ion-col width-100>
-        <button ion-button block>
-          មានគ្រាប់ននល
-        </button>
-      </ion-col>
-      <ion-col width-100>
-        <button ion-button block>
-          គ្មានបាច់សរសៃនាំ
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <unit id="C1L1Q1" audio-1="Msg Question 1.mp3" audio-2="" *ngIf="unitID == 'C1L1Q1'">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100>
+          <ion-card>
+            <img src="assets/files/images/C1L1Q1.jpg" alt="">
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row unit-view-options one-by-four wrap choice-correct-answer="" choice-wrong-answer="Training Message Q5.mp3">
+        <ion-col width-100>
+          <button ion-button block choice-1-audio="Msg, if incorrect Q1.mp3">
+            មានផ្កា
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block choice-2-audio="Msg, if incorrect Q1.mp3">
+            មានសំបកការពារ គ្រាប់
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block choice-3-audio="Msg, if correct Q1.mp3">
+            មានគ្រាប់ននល
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block choice-4-audio="Msg, if incorrect Q1.mp3">
+            គ្មានបាច់សរសៃនាំ
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
 
 
 </ion-content>

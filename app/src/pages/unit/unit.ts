@@ -16,6 +16,7 @@ export class UnitPage {
 
   public unitID;
   public soundPath;
+  private content;
   private playbackURI = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     let storage = window.localStorage;
@@ -38,6 +39,40 @@ export class UnitPage {
   ionViewDidLoad() {
     console.log('%cUnit ID: ' + this.unitID, 'font-size: 18px;');
 
+    // Parsing data from HTML View
+    // --------------------------------------------------------------------
+    /* Getting Main Unit element*/ let unit = 'unit[id="'+this.unitID+'"]';
+    // --------------------------------------------------------------------
+    // Children Element within that Unit element
+    this.content = {
+      'unit_id': this.unitID,
+      'audio_1': this.Q(unit, 'audio-1'),
+      'audio_2': this.Q(unit, 'audio-2'),
+      'answer_correct_audio': this.Q(unit+' [choice-correct-answer]', 'choice-correct-answer'),
+      'answer_wrong_audio': this.Q(unit+' [choice-wrong-answer]', 'choice-wrong-answer'),
+      'choice_1_audio': this.Q(unit+' [choice-1-audio]', 'choice-1-audio'),
+      'choice_2_audio': this.Q(unit+' [choice-2-audio]', 'choice-2-audio'),
+      'choice_3_audio': this.Q(unit+' [choice-3-audio]', 'choice-3-audio'),
+      'choice_4_audio': this.Q(unit+' [choice-4-audio]', 'choice-4-audio'),
+    };
+    // Done parsing!!!
+
+    // Logging the Unit Content
+    console.group('Initialized UNIT DATA');
+      console.log( "%cDisplaying UNIT: "+this.content['unit_id'], 'font-size: 20px;' );
+
+      console.log( "%cAudio 1: "+this.content['audio_1'], 'font-size: 16px;' );
+      console.log( "%cAudio 2: "+this.content['audio_2'], 'font-size: 16px;', );
+
+      console.log( "%cCorrect Audio: "+this.content['answer_correct_audio'], 'font-size: 16px;' );
+      console.log( "%cWrong Audio: "+this.content['answer_wrong_audio'], 'font-size: 16px;' );
+
+      console.log( "%cChoice 1: "+this.content['choice_1_audio'], 'font-size: 16px;' );
+      console.log( "%cChoice 2: "+this.content['choice_2_audio'], 'font-size: 16px;' );
+      console.log( "%cChoice 3: "+this.content['choice_3_audio'], 'font-size: 16px;' );
+      console.log( "%cChoice 4: "+this.content['choice_4_audio'], 'font-size: 16px;' );
+    console.groupEnd();
+
     setTimeout(() => {
       this.playSound('player1', this.soundPath+'/Msg Question 1.mp3')
         .then((player1) => {
@@ -53,6 +88,15 @@ export class UnitPage {
   ionViewWillLeave() {
     console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
     this.stopSoundComplex();
+  }
+
+  private Q(parent, attr) {
+    let data = document.querySelector(
+      parent
+    ).getAttribute(attr);
+    typeof data != 'string' ? data = '' : data = data;
+
+    return data;
   }
 
   private playSound(id, filename):Promise<any> {
