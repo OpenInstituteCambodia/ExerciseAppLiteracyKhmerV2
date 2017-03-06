@@ -13,12 +13,11 @@
 <ion-content unit-content>
 
   <unit id="C1L1Q1" audio-1="Msg Question 1.mp3" audio-2="" *ngIf="unitID == 'C1L1Q1'">
+    <!-- Unit View -->
     <ion-grid unit-view>
       <ion-row unit-view-head wrap>
         <ion-col width-100>
-          <ion-card>
-            <img src="assets/files/images/C1L1Q1.jpg" alt="">
-          </ion-card>
+          <ion-icon name="help"></ion-icon>
         </ion-col>
       </ion-row>
       <ion-row unit-view-options one-by-four wrap choice-correct-answer="" choice-wrong-answer="Training Message Q1.mp3">
@@ -41,6 +40,17 @@
           <button ion-button block choice-4-audio="Msg, if incorrect Q1.mp3" (click)="trigger(3, 4)">
             គ្មានបាច់សរសៃនាំ
           </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Training View -->
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100>
+          <ion-card>
+            <img src="assets/files/images/C1L1Q1.jpg" alt="">
+          </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
