@@ -47,12 +47,15 @@ export class UnitPage {
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
       // correct != choice ? this.unitTitle = 'មេរៀន​​ជំនួយ' : this.unitTitle = '';
       // correct != choice ? this.isHelperEnable = true : this.isHelperEnable = false;
+      let UnitNextAllow
+      correct == choice ? UnitNextAllow  = true : UnitNextAllow  = false;
 
       let helperModal;
       if (this.isHelperAllow) {
         helperModal = this.modalCtrl.create(
           HelperPage, {
-            unitID: this.content['unit_id']
+            unitID: this.content['unit_id'],
+            isUnitNextAllow: UnitNextAllow
           }
         );
       }

@@ -13,10 +13,11 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class HelperPage {
   public unitID;
-
+  private isUnitNextAllow = false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log('Modal Params: ', this.navParams.get('unitID'))
     this.unitID = this.navParams.get('unitID');
+    this.isUnitNextAllow = this.navParams.get('isUnitNextAllow');
   }
 
   ionViewDidLoad() {
