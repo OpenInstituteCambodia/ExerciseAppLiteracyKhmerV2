@@ -51,18 +51,25 @@ export class UnitPage {
       this.playSound('choice', playbackURL).then((stage1) => {
         console.log(stage1);
 
-        this.navCtrl.push(
-          HelperPage, {
-            unitID: this.content['unit_id'],
-            unitNextID: this.content['unit_next_id'],
-            isUnitNextAllow: UnitNextAllow,
-            playURI: statusURL
-          }
-        );
-
-        return this.playSound('choice', statusURL);
+        if (this.isHelperAllow) {
+          return new Promise((h, n) => {
+            h('HelperPage: Is Enabled, navigating...');
+          });
+        }else{
+          return this.playSound('choice', statusURL);
+        }
       }).then((stage2) => {
         console.log(stage2);
+        if (this.isHelperAllow) {
+          this.navCtrl.push(
+            HelperPage, {
+              unitID: this.content['unit_id'],
+              unitNextID: this.content['unit_next_id'],
+              isUnitNextAllow: UnitNextAllow,
+              playURI: statusURL
+            }
+          );
+        }
       }).catch((err) => {
         console.log(err);
       });
