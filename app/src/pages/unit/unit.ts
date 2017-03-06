@@ -15,10 +15,12 @@ export class UnitPage {
   // Please don't do stupid stuff out side of this area ;)
 
   public unitID;
+  public unitTitle = '';
   public soundPath;
   private content;
   private playbackURI = [];
   private isSoundPlaying = false;
+  private isHelperEnable = false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     let storage = window.localStorage;
 
@@ -28,12 +30,30 @@ export class UnitPage {
 
   // The following Function can be editable
   // --------------------------------------
-  /* Delay in milliseconds */
-  private replaySound():Promise<any> {
-    return new Promise((resolve, reject) => {
+    private replaySound():Promise<any> {
+      return new Promise((resolve, reject) => {
 
-    });
-  }
+      });
+    }
+
+    private trigger(correct, choice) {
+      let playbackURL = this.content['choice_'+choice+'_audio'];
+      let statusURL;
+
+      correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
+      correct != choice ? this.unitTitle = 'មេរៀន​​ជំនួយ' : this.unitTitle = '';
+      correct != choice ? this.isHelperEnable = true : this.isHelperEnable = false;
+
+      this.playSound('choice', playbackURL).then((stage1) => {
+        console.log(stage1);
+        return this.playSound('choice', statusURL);
+      }).then((stage2) => {
+        console.log(stage2);
+        this.isHelperEnable = false;
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
@@ -100,26 +120,11 @@ export class UnitPage {
     return data;
   }
 
-  private trigger(correct, choice) {
-    let playbackURL = this.content['choice_'+choice+'_audio'];
-    let statusURL;
-
-    correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
-
-    this.playSound('choice', playbackURL).then((stage1) => {
-      console.log(stage1);
-      return this.playSound('choice', statusURL);
-    }).then((stage2) => {
-      console.log(stage2);
-    }).catch((err) => {
-      console.log(err);
-    });
-  }
 
   private playSound(id, filename):Promise<any> {
     if (location.protocol == 'http:') {
       return new Promise((gg, ff) => {
-        ff('playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.');
+        gg('playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.');
       });
     }
 
