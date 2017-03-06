@@ -49,7 +49,6 @@ export class UnitPage {
         return this.playSound('choice', statusURL);
       }).then((stage2) => {
         console.log(stage2);
-        this.isHelperEnable = false;
       }).catch((err) => {
         console.log(err);
       });
@@ -120,6 +119,13 @@ export class UnitPage {
     return data;
   }
 
+  private backToggle(){
+    if(this.isHelperEnable == true) {
+      this.isHelperEnable = false;
+    }else{
+      this.navCtrl.pop();
+    }
+  }
 
   private playSound(id, filename):Promise<any> {
     if (location.protocol == 'http:') {
