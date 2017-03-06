@@ -11,6 +11,7 @@ export class UnitPage {
   // The following Variable can be editable
   // --------------------------------------
   /* Delay in milliseconds */ private delay = 500;
+  /* Enable Helper Display Mode */ private isHelperAllow = true;
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
@@ -26,6 +27,10 @@ export class UnitPage {
 
     this.unitID = this.navParams.get('unitID');
     this.soundPath = storage.getItem('soundPath');
+
+    typeof this.navParams.get('unitTitle') != 'undefined' ? this.unitTitle = this.navParams.get('unitTitle') : '';
+    typeof this.navParams.get('isHelperEnable') != 'undefined' ? this.isHelperEnable = this.navParams.get('isHelperEnable') : '';
+    console.log("typeof this.navParams.get('isHelperEnable')", typeof this.navParams.get('isHelperEnable'));
   }
 
   // The following Function can be editable
@@ -41,14 +46,23 @@ export class UnitPage {
       let statusURL;
 
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
-      correct != choice ? this.unitTitle = 'មេរៀន​​ជំនួយ' : this.unitTitle = '';
-      correct != choice ? this.isHelperEnable = true : this.isHelperEnable = false;
+      // correct != choice ? this.unitTitle = 'មេរៀន​​ជំនួយ' : this.unitTitle = '';
+      // correct != choice ? this.isHelperEnable = true : this.isHelperEnable = false;
 
       this.playSound('choice', playbackURL).then((stage1) => {
         console.log(stage1);
         return this.playSound('choice', statusURL);
       }).then((stage2) => {
         console.log(stage2);
+        if (this.isHelperAllow) {
+          this.navCtrl.push(
+            UnitPage, {
+              unitID: this.unitID,
+              unitTitle: 'មេរៀន​​ជំនួយ',
+              isHelperEnable: true
+            }
+          );
+        }
       }).catch((err) => {
         console.log(err);
       });
