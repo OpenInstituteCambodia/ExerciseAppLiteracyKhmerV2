@@ -1,6 +1,6 @@
 import { NativeAudio } from 'ionic-native';
 
-export default class BaseController {
+export class BaseController {
 
   private playbackURI;
   private isSoundPlaying;

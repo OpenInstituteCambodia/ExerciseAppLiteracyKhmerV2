@@ -3,12 +3,14 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { NativeAudio } from 'ionic-native';
 import { HelperPage } from '../helper/helper';
 
+import { BaseController } from '../../components/base';
+
 @Component({
   selector: 'page-unit',
   templateUrl: 'unit.html'
 })
 export class UnitPage {
-
+  private BASE = new BaseController();
   // The following Variable can be editable
   // --------------------------------------
   /* Delay in milliseconds */ private delay = 500;
