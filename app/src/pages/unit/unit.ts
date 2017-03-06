@@ -20,6 +20,7 @@ export class UnitPage {
   public soundPath;
   private content;
   private playbackURI = [];
+  private isUnitNextAllow = false;
   private isSoundPlaying = false;
   private isHelperEnable = false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -45,15 +46,13 @@ export class UnitPage {
       let playbackURL = this.content['choice_'+choice+'_audio'];
       let statusURL;
 
+      correct == choice ? this.isUnitNextAllow = true : this.isUnitNextAllow = false;
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
       // correct != choice ? this.unitTitle = 'មេរៀន​​ជំនួយ' : this.unitTitle = '';
       // correct != choice ? this.isHelperEnable = true : this.isHelperEnable = false;
 
       this.playSound('choice', playbackURL).then((stage1) => {
         console.log(stage1);
-        return this.playSound('choice', statusURL);
-      }).then((stage2) => {
-        console.log(stage2);
         if (this.isHelperAllow) {
           this.navCtrl.push(
             UnitPage, {
@@ -63,6 +62,9 @@ export class UnitPage {
             }
           );
         }
+        return this.playSound('choice', statusURL);
+      }).then((stage2) => {
+        console.log(stage2);
       }).catch((err) => {
         console.log(err);
       });
@@ -107,6 +109,9 @@ export class UnitPage {
       console.log( "%cChoice 4: "+this.content['choice_4_audio'], 'font-size: 16px;' );
     console.groupEnd();
 
+    if (this.isHelperEnable == true) {
+      return 'ionViewDidLoad(): Unit is in Helper Mode!';
+    }
     setTimeout(() => {
       this.playSound('player1', this.content['audio_1'])
         .then((player1) => {
@@ -120,8 +125,12 @@ export class UnitPage {
   }
 
   ionViewWillLeave() {
-    console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
-    this.stopSoundComplex();
+    if (this.isHelperEnable == true) {
+      return 'ionViewWillLeave(): Unit is in Helper Mode!';
+    }else{
+      console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
+      this.stopSoundComplex();
+    }
   }
 
   private Q(parent, attr) {
