@@ -55,7 +55,8 @@ export class UnitPage {
           HelperPage, {
             unitID: this.content['unit_id'],
             unitNextID: this.content['unit_next_id'],
-            isUnitNextAllow: UnitNextAllow
+            isUnitNextAllow: UnitNextAllow,
+            playURI: statusURL
           }
         );
 
