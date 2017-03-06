@@ -11,8 +11,8 @@ import { MenuPage } from '../pages/menu/menu';
 export class MyApp {
   rootPage = MenuPage;
   config: Array<any> = [{ // Don't forget its index [0]
-    sounds: 'assets/files/sounds',
-    images: 'assets/files/images'
+    sounds: 'assets/files/sounds/',
+    images: 'assets/files/images/'
   }];
 
   constructor(platform: Platform) {
