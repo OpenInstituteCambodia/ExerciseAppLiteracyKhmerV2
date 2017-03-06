@@ -31,7 +31,7 @@ export class HelperPage {
 
   ionViewDidLoad() {
     setTimeout(() => {
-      this.playSound('player1', this.playURI)
+      this.playSound('helper1', this.playURI)
       .then((player1) => {
         console.log(player1);
       }).catch((err) => { console.log(err); });
@@ -44,6 +44,7 @@ export class HelperPage {
   }
 
   private unit() {
+    this.stopSoundComplex();
     if (this.unitNextID == 'root' ){
       this.navCtrl.popToRoot();
       return false;
