@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController, AlertController } from 'ionic-angular';
 import { NativeAudio } from 'ionic-native';
 import { HelperPage } from '../helper/helper';
 
@@ -45,24 +45,20 @@ export class UnitPage {
       let statusURL;
 
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
-      // correct != choice ? this.unitTitle = 'មេរៀន​​ជំនួយ' : this.unitTitle = '';
-      // correct != choice ? this.isHelperEnable = true : this.isHelperEnable = false;
       let UnitNextAllow
       correct == choice ? UnitNextAllow  = true : UnitNextAllow  = false;
 
-      let helperModal;
-      if (this.isHelperAllow) {
-        helperModal = this.modalCtrl.create(
+      this.playSound('choice', playbackURL).then((stage1) => {
+        console.log(stage1);
+
+        this.navCtrl.push(
           HelperPage, {
             unitID: this.content['unit_id'],
+            unitNextID: this.content['unit_next_id'],
             isUnitNextAllow: UnitNextAllow
           }
         );
-      }
 
-      this.playSound('choice', playbackURL).then((stage1) => {
-        console.log(stage1);
-        helperModal.present();
         return this.playSound('choice', statusURL);
       }).then((stage2) => {
         console.log(stage2);
@@ -83,6 +79,7 @@ export class UnitPage {
     // Children Element within that Unit element
     this.content = {
       'unit_id': this.unitID,
+      'unit_next_id': this.Q(unit, 'unit-next'),
       'audio_1': this.Q(unit, 'audio-1'),
       'audio_2': this.Q(unit, 'audio-2'),
       'answer_correct_audio': this.Q(unit+' [choice-correct-answer]', 'choice-correct-answer'),
@@ -97,6 +94,7 @@ export class UnitPage {
     // Logging the Unit Content
     console.group('Initialized UNIT DATA');
       console.log( "%cDisplaying UNIT: "+this.content['unit_id'], 'font-size: 20px;' );
+      console.log( "%cUnit Next ID: "+this.content['unit_next_id'], 'font-size: 16px;' );
 
       console.log( "%cAudio 1: "+this.content['audio_1'], 'font-size: 16px;' );
       console.log( "%cAudio 2: "+this.content['audio_2'], 'font-size: 16px;', );
@@ -147,7 +145,6 @@ export class UnitPage {
         }, {
           text: 'ចាកចេញ',
           handler: () => {
-            console.log('exit');
             this.navCtrl.popToRoot();
           }
         }

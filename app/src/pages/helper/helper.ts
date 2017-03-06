@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { MenuPage } from '../menu/menu';
 import { UnitPage } from '../unit/unit';
 
 @Component({
@@ -8,10 +9,12 @@ import { UnitPage } from '../unit/unit';
 })
 export class HelperPage {
   public unitID;
+  public unitNextID;
   private isUnitNextAllow = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     console.log('Modal Params: ', this.navParams.get('unitID'))
     this.unitID = this.navParams.get('unitID');
+    this.unitNextID = this.navParams.get('unitNextID');
     this.isUnitNextAllow = this.navParams.get('isUnitNextAllow');
   }
 
@@ -19,12 +22,22 @@ export class HelperPage {
     console.log('ionViewDidLoad HelperPage');
   }
 
-  private unit(id) {
-    this.navCtrl.push(
-      UnitPage, {
-        unitID: id
-      }
-    );
+  private unit() {
+    if (this.unitNextID == 'root' ){
+      this.navCtrl.popToRoot();
+      return false;
+    }else{
+      this.navCtrl.push(
+        UnitPage, {
+          unitID: this.unitNextID
+        }
+      );
+    }
+  }
+
+  dismiss() {
+    let data = { 'foo': 'bar' };
+    this.viewCtrl.dismiss(data);
   }
 
 }

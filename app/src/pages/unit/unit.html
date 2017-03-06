@@ -1,9 +1,3 @@
-<!--
-  Generated template for the Unit page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header unit-header>
   <ion-navbar hideBackButton>
     <button ion-button icon-only menuToggle (click)="backButtonClick()">
@@ -17,7 +11,7 @@
 
 <ion-content unit-content>
 
-  <unit id="C1L1Q1" audio-1="Msg Question 1.mp3" audio-2="" *ngIf="unitID == 'C1L1Q1'">
+  <unit id="C1L1Q1" audio-1="Msg Question 1.mp3" audio-2="" *ngIf="unitID == 'C1L1Q1'" unit-next="C1L1Q2">
     <ion-grid unit-view>
       <ion-row unit-view-head wrap>
         <ion-col width-100>
@@ -49,6 +43,69 @@
     </ion-grid>
   </unit>
 
+  <unit id="C1L1Q2" audio-1="Msg Question 2.mp3" audio-2="" *ngIf="unitID == 'C1L1Q2'" unit-next="C1L1Q3">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100>
+          <ion-icon name="help"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row unit-view-options one-by-four wrap choice-correct-answer="" choice-wrong-answer="Training Message Q2.mp3">
+        <ion-col width-100>
+          <button ion-button block choice-1-audio="Msg, if incorrect Q1.mp3" (click)="trigger(2, 1)">
+            ប្រង់
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block choice-2-audio="Msg, if Correct Q2.mp3" (click)="trigger(2, 2)">
+            កូនីភែ
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block choice-3-audio="Msg, if incorrect Q1.mp3" (click)="trigger(2, 3)">
+            គីងកូ
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block choice-4-audio="Msg, if incorrect Q1.mp3" (click)="trigger(2, 4)">
+            ស៊ីណេតូភីត
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
+
+  <unit id="C1L1Q3" audio-1="Msg Question 3.mp3" audio-2="" *ngIf="unitID == 'C1L1Q3'" unit-next="root">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100>
+          <ion-icon name="help"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row unit-view-options one-by-four wrap choice-correct-answer="" choice-wrong-answer="Training Message Q3.mp3">
+        <ion-col width-100>
+          <button ion-button block choice-1-audio="Msg, if incorrect Q1.mp3" (click)="trigger(3, 1)">
+            ប្រង់
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block choice-2-audio="Msg, if incorrect Q2.mp3" (click)="trigger(3, 2)">
+            កូនីភែ
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block choice-3-audio="Msg, if Correct Q1.mp3" (click)="trigger(3, 3)">
+            គីងកូ
+          </button>
+        </ion-col>
+        <ion-col width-100 hidden>
+          <button ion-button block choice-4-audio="Msg, if incorrect Q1.mp3" (click)="trigger(2, 4)">
+            ស៊ីណេតូភីត
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
 
 </ion-content>
 
