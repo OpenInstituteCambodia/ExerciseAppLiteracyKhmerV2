@@ -2,15 +2,15 @@ import { NativeAudio } from 'ionic-native';
 
 export class BaseController {
 
-  private playbackURI;
-  private isSoundPlaying;
+  private playbackURI = [];
+  private isSoundPlaying = false;
   private soundPath;
   constructor() {
     let storage = window.localStorage;
     this.soundPath = storage.getItem('soundPath');
   }
 
-  private playSound(id, filename):Promise<any> {
+  public playSound(id, filename):Promise<any> {
     if (location.protocol == 'http:') {
       return new Promise((gg, ff) => {
         gg('playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.');
@@ -58,7 +58,7 @@ export class BaseController {
     });
   }
 
-  private stopSound(uri):Promise<any> {
+  public stopSound(uri):Promise<any> {
     return new Promise((resolve, reject) => {
       NativeAudio.stop(uri).then((suc) => {
         return NativeAudio.unload(uri);
@@ -70,7 +70,7 @@ export class BaseController {
     });
   }
 
-  private stopSoundComplex() {
+  public stopSoundComplex() {
     if (location.protocol == 'http:') {
       return 'playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.';
     }
