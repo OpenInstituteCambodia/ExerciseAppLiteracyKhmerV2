@@ -74,12 +74,9 @@ export class UnitPage {
     console.groupEnd();
 
     setTimeout(() => {
-      this.playSound('player1', this.soundPath+'/Msg Question 1.mp3')
+      this.playSound('player1', this.soundPath+this.content['audio_1'])
         .then((player1) => {
           console.log(player1);
-          return this.playSound('player2', this.soundPath+'/Msg Question 2.mp3');
-        }).then((player2) => {
-          console.log(player2);
         })
       .catch((err) => { console.log(err); });
     }, this.delay);
@@ -99,10 +96,32 @@ export class UnitPage {
     return data;
   }
 
+  private trigger(correct, choice) {
+    let playbackURL = this.soundPath+this.content['choice_'+choice+'_audio'];
+    let statusURL;
+
+    correct == choice ? statusURL = this.soundPath+this.content['answer_correct_audio'] : statusURL = this.soundPath+this.content['answer_wrong_audio'];
+
+    this.playSound('choice', playbackURL).then((stage1) => {
+      console.log(stage1);
+      return this.playSound('choice', statusURL);
+    }).then((stage2) => {
+      console.log(stage2);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
   private playSound(id, filename):Promise<any> {
     if (location.protocol == 'http:') {
       return new Promise((gg, ff) => {
         ff('playSound(id, filename):Promise<any> {}: Playback is not allow on Desktop Browser at the moment.');
+      });
+    }
+
+    if (filename == '') {
+      return new Promise((pass, skip) => {
+        skip('playSound(id, filename):Promise<any> {}: No Parameter Passing throught, skipping...');
       });
     }
 
