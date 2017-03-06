@@ -18,6 +18,7 @@ export class UnitPage {
   public soundPath;
   private content;
   private playbackURI = [];
+  private isSoundPlaying = false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     let storage = window.localStorage;
 
@@ -74,9 +75,12 @@ export class UnitPage {
     console.groupEnd();
 
     setTimeout(() => {
-      this.playSound('player1', this.soundPath+this.content['audio_1'])
+      this.playSound('player1', this.content['audio_1'])
         .then((player1) => {
           console.log(player1);
+          return this.playSound('player1', this.content['audio_2']);
+        }).then((player2) => {
+          console.log(player2);
         })
       .catch((err) => { console.log(err); });
     }, this.delay);
@@ -97,10 +101,10 @@ export class UnitPage {
   }
 
   private trigger(correct, choice) {
-    let playbackURL = this.soundPath+this.content['choice_'+choice+'_audio'];
+    let playbackURL = this.content['choice_'+choice+'_audio'];
     let statusURL;
 
-    correct == choice ? statusURL = this.soundPath+this.content['answer_correct_audio'] : statusURL = this.soundPath+this.content['answer_wrong_audio'];
+    correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
 
     this.playSound('choice', playbackURL).then((stage1) => {
       console.log(stage1);
@@ -125,10 +129,17 @@ export class UnitPage {
       });
     }
 
+    if (this.isSoundPlaying == true) {
+      return new Promise((pass, skip) => {
+        skip('playSound(id, filename):Promise<any> {}: Playback is in progress, please wait until it finished before playing...');
+      });
+    }
+
     return new Promise((resolve, reject) => {
       console.log('%cplaySound(' + id + ', ' + filename + '):Promise<any>', 'font-size: 14px;');
       this.playbackURI.push(id);
-      NativeAudio.preloadComplex(id, filename, 1, 1, 0)
+      this.isSoundPlaying = true;
+      NativeAudio.preloadComplex(id, this.soundPath+filename, 1, 1, 0)
         .then((initialized) => {
           console.log('playSound(id, filename):Promise<any> {}: Playback initialized: ', initialized);
           return new Promise((rs, re) => {
@@ -144,6 +155,7 @@ export class UnitPage {
           return NativeAudio.unload(id);
         })
         .then((completed) => {
+          this.isSoundPlaying = false;
           resolve('playSound(id, filename):Promise<any> {}: Promise Resolved: ' + completed);
         })
       .catch((error) => {
