@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { Platform, NavController, NavParams, AlertController } from 'ionic-angular';
 import { NativeAudio } from 'ionic-native';
 import { HelperPage } from '../helper/helper';
 
@@ -22,14 +22,14 @@ export class UnitPage {
   private content;
 
   private MediaPlayer = new BaseController();
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform) {
     this.unitID = this.navParams.get('unitID');
     typeof this.navParams.get('unitTitle') != 'undefined' ? this.unitTitle = this.navParams.get('unitTitle') : '';
   }
 
   // The following Function can be editable
   // --------------------------------------
-    private replayUnit() {
+    private replayButtonClick() {
       this.startUnitIntro();
     }
 
@@ -158,6 +158,26 @@ export class UnitPage {
     });
     confirm.present();
 
+  }
+
+  private exitButtonClick() {
+    let alert = this.alertCtrl.create({
+      title: 'ចាកចេញ',
+      message: 'តើ​អ្នក​ពិត​ជា​ចង់​ចាក​ចេញ​ពី​កម្មវិធី​នេះ?​',
+      buttons: [
+        {
+          text: "ទេ",
+          role: 'cancel'
+        },
+        {
+          text: "បាទ​ / ចាស",
+          handler: () => {
+            this.platform.exitApp();
+          }
+        },
+      ]
+    });
+    alert.present();
   }
 
 }
