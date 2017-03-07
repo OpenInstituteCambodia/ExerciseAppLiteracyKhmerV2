@@ -108,7 +108,7 @@
 
 <ion-footer unit-footer>
   <ion-toolbar>
-    <button ion-button clear (click)="backButtonClick()">
+    <button ion-button clear (click)="backButtonClick()" *ngIf="isUnitNextAllow == false">
       <ion-icon name="arrow-back"></ion-icon>
     </button>
     <button ion-button clear (click)="replayButtonClick()">
