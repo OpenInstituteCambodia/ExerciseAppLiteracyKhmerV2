@@ -106,7 +106,7 @@
 
 <ion-footer unit-footer>
   <ion-toolbar>
-    <button ion-button clear navPop>
+    <button ion-button clear (click)="backButtonClick()">
       <ion-icon name="arrow-back"></ion-icon>
     </button>
     <button ion-button clear (click)="replayUnit()">
