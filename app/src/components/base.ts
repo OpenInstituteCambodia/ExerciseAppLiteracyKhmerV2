@@ -3,7 +3,7 @@ import { NativeAudio } from 'ionic-native';
 export class BaseController {
 
   private playbackURI = [];
-  private isSoundPlaying = false;
+  public isSoundPlaying = false;
   private soundPath;
   constructor() {
     let storage = window.localStorage;

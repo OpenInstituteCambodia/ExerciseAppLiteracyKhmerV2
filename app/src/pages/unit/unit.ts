@@ -21,6 +21,7 @@ export class UnitPage {
   public unitTitle = '';
   private content;
   public triggerState = "help";
+  private triggerEnable = false;
 
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform) {
@@ -35,6 +36,10 @@ export class UnitPage {
     }
 
     private trigger(correct, choice) {
+      if(this.MediaPlayer.isSoundPlaying == true){
+        return false;
+      }
+
       let playbackURL = this.content['choice_'+choice+'_audio'];
       let statusURL;
       let UnitNextAllow
