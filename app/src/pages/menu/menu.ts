@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Platform, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { UnitPage } from '../unit/unit';
 
 @Component({
@@ -15,7 +15,7 @@ export class MenuPage {
   // Please don't do stupid stuff out side of this area ;)
 
   public menuID;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public toastCtrl: ToastController) {
     typeof this.navParams.get('menuID') == 'undefined' ? this.menuID = 'root' : this.menuID = this.navParams.get('menuID');
     typeof this.navParams.get('title') != 'undefined' ? this.menuTitle = this.navParams.get('title') : true;
   }
@@ -38,5 +38,33 @@ export class MenuPage {
         unitID: id
       }
     );
+  }
+
+  private playButtonClick() {
+    let toast = this.toastCtrl.create({
+      message: 'This application is demo version.',
+      duration: 3000
+    });
+    toast.present();
+  }
+
+  private exitButtonClick() {
+    let alert = this.alertCtrl.create({
+      title: 'ចាកចេញ',
+      message: 'តើ​អ្នក​ពិត​ជា​ចង់​ចាក​ចេញ​ពី​កម្មវិធី​នេះ?​',
+      buttons: [
+        {
+          text: "ទេ",
+          role: 'cancel'
+        },
+        {
+          text: "បាទ​ / ចាស",
+          handler: () => {
+            this.platform.exitApp();
+          }
+        },
+      ]
+    });
+    alert.present();
   }
 }
