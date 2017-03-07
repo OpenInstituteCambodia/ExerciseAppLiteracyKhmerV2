@@ -13,6 +13,8 @@ export class UnitPage {
   // The following Variable can be editable
   // --------------------------------------
   /* Delay in milliseconds */ private delay = 500;
+  /* Enable Animation Mode */ private isAnimateAllow = true;
+  /* Delay Animation in milliseconds*/ private AnimateDelay = 500;
   /* Enable Helper Display Mode */ private isHelperAllow = true;
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
@@ -49,36 +51,38 @@ export class UnitPage {
 
       setTimeout(() => {
         correct == choice ? this.triggerState = "happy" : this.triggerState = "sad";
-      }, 500);
 
-      this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
-        console.log(stage1);
-        return new Promise((h, n) => {
-          h('HelperPage: Is Enabled, navigating...');
-        });
-      }).then((stage2) => {
-        if (this.isHelperAllow) {
+        this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
+          console.log(stage1);
           return new Promise((h, n) => {
             h('HelperPage: Is Enabled, navigating...');
           });
-        }else{
-          return this.MediaPlayer.playSound('choice', statusURL);
-        }
-      }).then((stage3) => {
-        console.log(stage3);
-        if (this.isHelperAllow) {
-          this.navCtrl.push(
-            HelperPage, {
-              unitID: this.content['unit_id'],
-              unitNextID: this.content['unit_next_id'],
-              isUnitNextAllow: UnitNextAllow,
-              playURI: statusURL
-            }
-          );
-        }
-      }).catch((err) => {
-        console.log(err);
-      });
+        }).then((stage2) => {
+          if (this.isHelperAllow) {
+            return new Promise((h, n) => {
+              h('HelperPage: Is Enabled, navigating...');
+            });
+          }else{
+            return this.MediaPlayer.playSound('choice', statusURL);
+          }
+        }).then((stage3) => {
+          console.log(stage3);
+          if (this.isHelperAllow) {
+            this.navCtrl.push(
+              HelperPage, {
+                unitID: this.content['unit_id'],
+                unitNextID: this.content['unit_next_id'],
+                isUnitNextAllow: UnitNextAllow,
+                playURI: statusURL
+              }
+            );
+          }
+        }).catch((err) => {
+          console.log(err);
+        });
+
+      }, this.AnimateDelay);
+
     }
 
     private startUnitIntro() {
