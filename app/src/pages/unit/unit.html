@@ -48,11 +48,13 @@
   <unit id="C1L1Q2" audio-1="Msg Question 2.mp3" audio-2="" *ngIf="unitID == 'C1L1Q2'" unit-next="C1L1Q3">
     <ion-grid unit-view>
       <ion-row unit-view-head wrap>
-        <ion-col width-100>
-          <ion-icon name="help"></ion-icon>
+        <ion-col width-100 [attr.triggerState]="triggerState">
+          <ion-icon class="animated fadeIn" name="help"></ion-icon>
+          <ion-icon class="animated flip" name="happy"></ion-icon>
+          <ion-icon class="animated flip" name="sad"></ion-icon>
         </ion-col>
       </ion-row>
-      <ion-row unit-view-options one-by-four wrap choice-correct-answer="Training Message Q2.mp3" choice-wrong-answer="Training Message Q2.mp3">
+      <ion-row class="animated fadeIn" unit-view-options one-by-four wrap choice-correct-answer="Training Message Q2.mp3" choice-wrong-answer="Training Message Q2.mp3">
         <ion-col width-100>
           <button ion-button block color-1 choice-1-audio="Msg, if incorrect Q1.mp3" (click)="trigger(2, 1)">
             ប្រង់
@@ -80,11 +82,13 @@
   <unit id="C1L1Q3" audio-1="Msg Question 3.mp3" audio-2="" *ngIf="unitID == 'C1L1Q3'" unit-next="root">
     <ion-grid unit-view>
       <ion-row unit-view-head wrap>
-        <ion-col width-100>
-          <ion-icon name="help"></ion-icon>
+        <ion-col width-100 [attr.triggerState]="triggerState">
+          <ion-icon class="animated fadeIn" name="help"></ion-icon>
+          <ion-icon class="animated flip" name="happy"></ion-icon>
+          <ion-icon class="animated flip" name="sad"></ion-icon>
         </ion-col>
       </ion-row>
-      <ion-row unit-view-options one-by-four wrap choice-correct-answer="Training Message Q3.mp3" choice-wrong-answer="Training Message Q3.mp3">
+      <ion-row class="animated fadeIn" unit-view-options one-by-four wrap choice-correct-answer="Training Message Q3.mp3" choice-wrong-answer="Training Message Q3.mp3">
         <ion-col width-100>
           <button ion-button block color-1 choice-1-audio="Msg, if incorrect Q1.mp3" (click)="trigger(3, 1)">
             ប្រង់

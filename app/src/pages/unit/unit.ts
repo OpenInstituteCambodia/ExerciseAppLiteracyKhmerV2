@@ -42,16 +42,14 @@ export class UnitPage {
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
       correct == choice ? UnitNextAllow  = true : UnitNextAllow  = false;
 
+      setTimeout(() => {
+        correct == choice ? this.triggerState = "happy" : this.triggerState = "sad";
+      }, 500);
+
       this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
         console.log(stage1);
-
         return new Promise((h, n) => {
-          setTimeout(() => {
-            correct == choice ? this.triggerState = "happy" : this.triggerState = "sad";
-          }, 700);
-          setTimeout(() => {
-            h('HelperPage: Is Enabled, navigating...');
-          }, 2500);
+          h('HelperPage: Is Enabled, navigating...');
         });
       }).then((stage2) => {
         if (this.isHelperAllow) {
