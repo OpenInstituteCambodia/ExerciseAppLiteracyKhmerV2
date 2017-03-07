@@ -105,3 +105,17 @@
   </unit>
 
 </ion-content>
+
+<ion-footer unit-footer>
+  <ion-toolbar>
+    <button ion-button clear (click)="backButtonClick()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <button ion-button clear (click)="replayButtonClick()">
+      <ion-icon name="refresh"></ion-icon>
+    </button>
+    <button ion-button clear (click)="exitButtonClick()">
+      <ion-icon name="power"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-footer>
