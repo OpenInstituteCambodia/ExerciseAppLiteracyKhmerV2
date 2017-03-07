@@ -20,6 +20,7 @@ export class UnitPage {
   public unitID;
   public unitTitle = '';
   private content;
+  public triggerState = "help";
 
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform) {
@@ -44,6 +45,15 @@ export class UnitPage {
       this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
         console.log(stage1);
 
+        return new Promise((h, n) => {
+          setTimeout(() => {
+            correct == choice ? this.triggerState = "happy" : this.triggerState = "sad";
+          }, 700);
+          setTimeout(() => {
+            h('HelperPage: Is Enabled, navigating...');
+          }, 2500);
+        });
+      }).then((stage2) => {
         if (this.isHelperAllow) {
           return new Promise((h, n) => {
             h('HelperPage: Is Enabled, navigating...');
@@ -51,8 +61,8 @@ export class UnitPage {
         }else{
           return this.MediaPlayer.playSound('choice', statusURL);
         }
-      }).then((stage2) => {
-        console.log(stage2);
+      }).then((stage3) => {
+        console.log(stage3);
         if (this.isHelperAllow) {
           this.navCtrl.push(
             HelperPage, {

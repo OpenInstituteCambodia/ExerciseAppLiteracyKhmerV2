@@ -106,6 +106,10 @@ page-unit {
     } // [unit-view]
   } // [unit-content]
 
+  [reactions] {
+
+  }
+
   [unit-footer] {
     ion-toolbar {
       text-align: center;
@@ -128,5 +132,32 @@ page-unit {
       background-image: none;
     }
   } // [unit-footer]
+
+  [triggerState] {
+
+    ion-icon[name="help"] {}
+    ion-icon[name="happy"] {
+      color: #19A15F !important;
+    }
+    ion-icon[name="sad"] {
+      color: #DE5347 !important;
+    }
+
+    &[triggerState="help"] {
+      ion-icon[name="help"] {}
+      ion-icon[name="happy"] { display: none; }
+      ion-icon[name="sad"] { display: none; }
+    }
+    &[triggerState="happy"] {
+      ion-icon[name="help"] { display: none;}
+      ion-icon[name="happy"] {}
+      ion-icon[name="sad"] { display: none; }
+    }
+    &[triggerState="sad"] {
+      ion-icon[name="help"] { display: none;}
+      ion-icon[name="happy"] { display: none; }
+      ion-icon[name="sad"] {}
+    }
+  }
 
 }
