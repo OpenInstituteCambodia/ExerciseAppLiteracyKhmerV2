@@ -36,9 +36,9 @@ export class UnitPage {
     private trigger(correct, choice) {
       let playbackURL = this.content['choice_'+choice+'_audio'];
       let statusURL;
+      let UnitNextAllow
 
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
-      let UnitNextAllow
       correct == choice ? UnitNextAllow  = true : UnitNextAllow  = false;
 
       this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
