@@ -29,10 +29,8 @@ export class UnitPage {
 
   // The following Function can be editable
   // --------------------------------------
-    private replaySound():Promise<any> {
-      return new Promise((resolve, reject) => {
-
-      });
+    private replayUnit() {
+      this.startUnitIntro();
     }
 
     private trigger(correct, choice) {
@@ -68,6 +66,19 @@ export class UnitPage {
       }).catch((err) => {
         console.log(err);
       });
+    }
+
+    private startUnitIntro() {
+      setTimeout(() => {
+        this.MediaPlayer.playSound('player1', this.content['audio_1'])
+          .then((player1) => {
+            console.log(player1);
+            return this.MediaPlayer.playSound('player1', this.content['audio_2']);
+          }).then((player2) => {
+            console.log(player2);
+          })
+        .catch((err) => { console.log(err); });
+      }, this.delay);
     }
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
@@ -111,16 +122,7 @@ export class UnitPage {
       console.log( "%cChoice 4: "+this.content['choice_4_audio'], 'font-size: 16px;' );
     console.groupEnd();
 
-    setTimeout(() => {
-      this.MediaPlayer.playSound('player1', this.content['audio_1'])
-        .then((player1) => {
-          console.log(player1);
-          return this.MediaPlayer.playSound('player1', this.content['audio_2']);
-        }).then((player2) => {
-          console.log(player2);
-        })
-      .catch((err) => { console.log(err); });
-    }, this.delay);
+    this.startUnitIntro();
   }
 
   ionViewWillLeave() {
