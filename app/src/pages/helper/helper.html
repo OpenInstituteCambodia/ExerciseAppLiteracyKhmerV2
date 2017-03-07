@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar hideBackButton>
-    <button ion-button icon-only menuToggle navPop *ngIf="isUnitNextAllow == false">
+    <button ion-button icon-only menuToggle (click)="backButtonClick()" *ngIf="isUnitNextAllow == false">
       <ion-icon name="close"></ion-icon>
     </button>
 

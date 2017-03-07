@@ -53,4 +53,12 @@ export class HelperPage {
     }
   }
 
+  private backButtonClick(){
+    this.navCtrl.push(
+      UnitPage, {
+        unitID: this.unitID
+      }
+    );
+  }
+
 }
