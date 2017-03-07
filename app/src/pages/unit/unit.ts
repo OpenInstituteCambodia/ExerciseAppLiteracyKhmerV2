@@ -51,37 +51,38 @@ export class UnitPage {
 
       setTimeout(() => {
         correct == choice ? this.triggerState = "happy" : this.triggerState = "sad";
+      }, this.isHelperAllow == true ? this.AnimateDelay : 0);
 
-        this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
-          console.log(stage1);
+      this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
+        console.log(stage1);
+        return new Promise((h, n) => {
+          setTimeout(() => {
+            h('HelperPage: Is Enabled, navigating...');
+          }, this.isHelperAllow == true ? this.AnimateDelay*1.25 : 0);
+        });
+      }).then((stage2) => {
+        if (this.isHelperAllow) {
           return new Promise((h, n) => {
             h('HelperPage: Is Enabled, navigating...');
           });
-        }).then((stage2) => {
-          if (this.isHelperAllow) {
-            return new Promise((h, n) => {
-              h('HelperPage: Is Enabled, navigating...');
-            });
-          }else{
-            return this.MediaPlayer.playSound('choice', statusURL);
-          }
-        }).then((stage3) => {
-          console.log(stage3);
-          if (this.isHelperAllow) {
-            this.navCtrl.push(
-              HelperPage, {
-                unitID: this.content['unit_id'],
-                unitNextID: this.content['unit_next_id'],
-                isUnitNextAllow: UnitNextAllow,
-                playURI: statusURL
-              }
-            );
-          }
-        }).catch((err) => {
-          console.log(err);
-        });
-
-      }, this.AnimateDelay);
+        }else{
+          return this.MediaPlayer.playSound('choice', statusURL);
+        }
+      }).then((stage3) => {
+        console.log(stage3);
+        if (this.isHelperAllow) {
+          this.navCtrl.push(
+            HelperPage, {
+              unitID: this.content['unit_id'],
+              unitNextID: this.content['unit_next_id'],
+              isUnitNextAllow: UnitNextAllow,
+              playURI: statusURL
+            }
+          );
+        }
+      }).catch((err) => {
+        console.log(err);
+      });
 
     }
 
