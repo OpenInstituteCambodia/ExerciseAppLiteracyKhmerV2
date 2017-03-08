@@ -1,61 +1,139 @@
-<!--
-  Generated template for the Unit page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header unit-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton>
+    <button ion-button icon-only menuToggle (click)="backButtonClick()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+
     <ion-title></ion-title>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content unit-content>
 
-  <ion-grid id="C1L1Q1" audio-1="Msg Question 1.mp3" audio-2="" unit-view *ngIf="unitID == 'C1L1Q1'">
-    <ion-row unit-view-head wrap>
-      <ion-col width-100>
-        <ion-card>
-          <img src="assets/files/images/C1L1Q1.jpg" alt="">
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row unit-view-options one-by-four wrap>
-      <ion-col width-100>
-        <button ion-button block>
-          មានផ្កា
-        </button>
-      </ion-col>
-      <ion-col width-100>
-        <button ion-button block>
-          មានសំបកការពារ គ្រាប់
-        </button>
-      </ion-col>
-      <ion-col width-100>
-        <button ion-button block>
-          មានគ្រាប់ននល
-        </button>
-      </ion-col>
-      <ion-col width-100>
-        <button ion-button block>
-          គ្មានបាច់សរសៃនាំ
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <unit id="C1L1Q1" audio-1="Msg Question 1.mp3" audio-2="" *ngIf="unitID == 'C1L1Q1'" unit-next="C1L1Q2">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100 [attr.triggerState]="triggerState" *ngIf="isAnimateAllow">
+          <ion-icon class="animated fadeIn" name="help"></ion-icon>
+          <ion-icon class="animated flip" name="happy"></ion-icon>
+          <ion-icon class="animated flip" name="sad"></ion-icon>
+        </ion-col>
+        <ion-col width-100 *ngIf="!isAnimateAllow">
+          <ion-card>
+            <img src="assets/files/images/C1L1Q1.jpg" alt="">
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row class="animated fadeIn" unit-view-options one-by-four wrap choice-correct-answer="Training Message Q1.mp3" choice-wrong-answer="Training Message Q1.mp3">
+        <ion-col width-100>
+          <button ion-button block color-1 choice-1-audio="wrong.mp3" (click)="trigger(3, 1)">
+            មានផ្កា
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block color-2 choice-2-audio="wrong.mp3" (click)="trigger(3, 2)">
+            មានសំបកការពារ គ្រាប់
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block color-3 choice-3-audio="correct.mp3" (click)="trigger(3, 3)">
+            មានគ្រាប់ននល
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block color-4 choice-4-audio="wrong.mp3" (click)="trigger(3, 4)">
+            គ្មានបាច់សរសៃនាំ
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
 
+  <unit id="C1L1Q2" audio-1="Msg Question 2.mp3" audio-2="" *ngIf="unitID == 'C1L1Q2'" unit-next="C1L1Q3">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100 [attr.triggerState]="triggerState" *ngIf="isAnimateAllow">
+          <ion-icon class="animated fadeIn" name="help"></ion-icon>
+          <ion-icon class="animated flip" name="happy"></ion-icon>
+          <ion-icon class="animated flip" name="sad"></ion-icon>
+        </ion-col>
+        <ion-col width-100 *ngIf="!isAnimateAllow">
+          <ion-card>
+            <img src="assets/files/images/C1L1Q2.jpg" alt="">
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row class="animated fadeIn" unit-view-options one-by-four wrap choice-correct-answer="Training Message Q2.mp3" choice-wrong-answer="Training Message Q2.mp3">
+        <ion-col width-100>
+          <button ion-button block color-1 choice-1-audio="wrong.mp3" (click)="trigger(2, 1)">
+            ប្រង់
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block color-2 choice-2-audio="correct.mp3" (click)="trigger(2, 2)">
+            កូនីភែ
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block color-3 choice-3-audio="wrong.mp3" (click)="trigger(2, 3)">
+            គីងកូ
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block color-4 choice-4-audio="wrong.mp3" (click)="trigger(2, 4)">
+            ស៊ីណេតូភីត
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
+
+  <unit id="C1L1Q3" audio-1="Msg Question 3.mp3" audio-2="" *ngIf="unitID == 'C1L1Q3'" unit-next="root">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100 [attr.triggerState]="triggerState" *ngIf="isAnimateAllow">
+          <ion-icon class="animated fadeIn" name="help"></ion-icon>
+          <ion-icon class="animated flip" name="happy"></ion-icon>
+          <ion-icon class="animated flip" name="sad"></ion-icon>
+        </ion-col>
+        <ion-col width-100 *ngIf="!isAnimateAllow">
+          <ion-card>
+            <img src="assets/files/images/C1L1Q3.jpg" alt="">
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row class="animated fadeIn" unit-view-options one-by-four wrap choice-correct-answer="Training Message Q3.mp3" choice-wrong-answer="Training Message Q3.mp3">
+        <ion-col width-100>
+          <button ion-button block color-1 choice-1-audio="Msg, if incorrect Q1.mp3" (click)="trigger(3, 1)">
+            ប្រង់
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block color-2 choice-2-audio="Msg, if incorrect Q2.mp3" (click)="trigger(3, 2)">
+            កូនីភែ
+          </button>
+        </ion-col>
+        <ion-col width-100>
+          <button ion-button block color-3 choice-3-audio="Msg, if Correct Q1.mp3" (click)="trigger(3, 3)">
+            គីងកូ
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
 
 </ion-content>
 
 <ion-footer unit-footer>
   <ion-toolbar>
-    <button ion-button clear navPop>
+    <button ion-button clear (click)="backButtonClick()">
       <ion-icon name="arrow-back"></ion-icon>
     </button>
-    <button ion-button clear (click)="replayUnit()">
+    <button ion-button clear (click)="replayButtonClick()">
       <ion-icon name="refresh"></ion-icon>
     </button>
-    <button ion-button clear (click)="exit()">
+    <button ion-button clear (click)="exitButtonClick()">
       <ion-icon name="power"></ion-icon>
     </button>
   </ion-toolbar>

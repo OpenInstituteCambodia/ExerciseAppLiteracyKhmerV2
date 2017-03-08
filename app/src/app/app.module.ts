@@ -3,12 +3,14 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { MenuPage } from '../pages/menu/menu';
 import { UnitPage } from '../pages/unit/unit';
+import { HelperPage } from '../pages/helper/helper';
 
 @NgModule({
   declarations: [
     MyApp,
     MenuPage,
-    UnitPage
+    UnitPage,
+    HelperPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -17,7 +19,8 @@ import { UnitPage } from '../pages/unit/unit';
   entryComponents: [
     MyApp,
     MenuPage,
-    UnitPage
+    UnitPage,
+    HelperPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}],
   schemas: [ NO_ERRORS_SCHEMA ]

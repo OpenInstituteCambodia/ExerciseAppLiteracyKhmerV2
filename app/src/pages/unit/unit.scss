@@ -14,6 +14,7 @@ page-unit {
       height: 100%;
       [unit-view-head] {
         height: 50%;
+        text-align: center;
         ion-card {
           height: 95%;
           border-radius: 5px;
@@ -22,6 +23,12 @@ page-unit {
           img {
             height: 100%;
           }
+        }
+
+        ion-icon {
+          font-size: 12em;
+          color: #555;
+          margin-top: 10%;
         }
       }
       [unit-view-options] {
@@ -99,6 +106,10 @@ page-unit {
     } // [unit-view]
   } // [unit-content]
 
+  [reactions] {
+
+  }
+
   [unit-footer] {
     ion-toolbar {
       text-align: center;
@@ -122,10 +133,31 @@ page-unit {
     }
   } // [unit-footer]
 
-  [width-100] {
-    -webkit-flex: 0 0 100%;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100;
-    max-width: 100%;
+  [triggerState] {
+
+    ion-icon[name="help"] {}
+    ion-icon[name="happy"] {
+      color: #19A15F !important;
+    }
+    ion-icon[name="sad"] {
+      color: #DE5347 !important;
+    }
+
+    &[triggerState="help"] {
+      ion-icon[name="help"] {}
+      ion-icon[name="happy"] { display: none; }
+      ion-icon[name="sad"] { display: none; }
+    }
+    &[triggerState="happy"] {
+      ion-icon[name="help"] { display: none;}
+      ion-icon[name="happy"] {}
+      ion-icon[name="sad"] { display: none; }
+    }
+    &[triggerState="sad"] {
+      ion-icon[name="help"] { display: none;}
+      ion-icon[name="happy"] { display: none; }
+      ion-icon[name="sad"] {}
+    }
   }
+
 }

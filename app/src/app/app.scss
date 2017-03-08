@@ -15,6 +15,8 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+$colors: #19A15F #4C8CF5 #DE5347 #FFCE43;
+
 /* khmer */
 @font-face {
   font-family: 'Hanuman';
@@ -25,5 +27,22 @@
 }
 
 ion-app {
-  font-family: 'Hanuman' !important;
+  font-family: 'Roboto', 'Hanuman' !important;
+}
+
+[width-100] {
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100;
+  max-width: 100%;
+}
+
+[ion-button] {
+  @each $color in $colors {
+    $i: index($colors, $color);
+    &[color-#{$i}] {
+      background-color: $color;
+      color: #222;
+    }
+  }
 }
