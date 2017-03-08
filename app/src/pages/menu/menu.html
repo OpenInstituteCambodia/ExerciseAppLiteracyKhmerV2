@@ -1,0 +1,386 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{menuTitle}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content xela>
+  <!-- ROOT -->
+    <ion-grid *ngIf="menuID == 'root'">
+      <ion-row wrap>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('C1', 'ជំពូក ១')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('C2', 'ជំពូក ២')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('C3', 'ជំពូក ៣')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៣
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('C4', 'ជំពូក ៤')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៤
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('C5', 'ជំពូក ៥')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៥
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('C6', 'ជំពូក ៦')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៦
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('C7', 'ជំពូក ៧')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៧
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-50 >
+          <button ion-button block (click)="menu('C8', 'ជំពូក ៨')">
+            <div class="text">
+              ជំពូក
+            </div>
+            <div class="number">
+              ៨
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END ROOT -->
+
+  <!-- C1 -->
+    <ion-grid equalized *ngIf="menuID == 'C1'">
+      <ion-row wrap>
+        <ion-col width-100 menu-header class="animated fadeInUp">
+          ស៊ីមណូស្ពែម និង​អង់ស្យូស្ពែម
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C1L1Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C1L2Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END C1 -->
+
+  <!-- C2 -->
+    <ion-grid equalized *ngIf="menuID == 'C2'">
+      <ion-row wrap>
+        <ion-col width-100 menu-header class="animated fadeInUp">
+          ការលួត​លាស់​និង​តំណប​រំញោច​រុក្ខ​ជាតិ​
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C2L1Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C2L2Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END C2 -->
+
+  <!-- C3 -->
+    <ion-grid equalized *ngIf="menuID == 'C3'">
+      <ion-row wrap>
+        <ion-col width-100 menu-header class="animated fadeInUp">
+          តម្រូវ​ផ្សេងៗ​របស់​សារពាង្គកាយ​
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C3L1Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C3L2Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C3L3Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ៣
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END C3 -->
+
+  <!-- C4 -->
+    <ion-grid equalized *ngIf="menuID == 'C4'">
+      <ion-row wrap>
+        <ion-col width-100 menu-header class="animated fadeInUp">
+          នាទី​របស់​ប្រូតេអ៊ីន​ក្នុង​សារពាង្គកាយ​
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C4L1Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C4L2Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C4L3Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ៣
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END C4 -->
+
+  <!-- C5 -->
+    <ion-grid equalized *ngIf="menuID == 'C5'">
+      <ion-row wrap>
+        <ion-col width-100 menu-header class="animated fadeInUp">
+          ព័ត៌មាន​សេនេទិច​និង​ការ​សំដែង​នៃ​សែន​
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C5L1Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C5L2Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C5L3Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ៣
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END C5 -->
+
+  <!-- C6 -->
+    <ion-grid equalized *ngIf="menuID == 'C6'">
+      <ion-row wrap>
+        <ion-col width-100 menu-header class="animated fadeInUp">
+          ការវិវត្ត​នៃ​ភាវៈ​រស់​
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C6L1Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C6L2Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C6L3Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ៣
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END C6 -->
+
+  <!-- C7 -->
+    <ion-grid equalized *ngIf="menuID == 'C7'">
+      <ion-row wrap>
+        <ion-col width-100 menu-header class="animated fadeInUp">
+          ពពួក​និង​សហគមន៏​
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C7L1Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C7L2Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END C7 -->
+
+  <!-- C8 -->
+    <ion-grid equalized *ngIf="menuID == 'C8'">
+      <ion-row wrap>
+        <ion-col width-100 menu-header class="animated fadeInUp">
+          អេកូឡូស៊ី​
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C8L1Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ១
+            </div>
+          </button>
+        </ion-col>
+        <ion-col width-100 class="animated fadeInUp">
+          <button ion-button block (click)="unit('C8L2Q1')">
+            <div class="text">
+              មេរៀន​ទី
+            </div>
+            <div class="number">
+              ២
+            </div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END C8 -->
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button clear (click)="exitButtonClick()">
+      <ion-icon name="power"></ion-icon>
+    </button>
+    <button ion-button clear (click)="playButtonClick()">
+      <ion-icon name="play"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-footer>

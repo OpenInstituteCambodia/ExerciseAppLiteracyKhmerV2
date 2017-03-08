@@ -1,0 +1,64 @@
+page-menu {
+  [xela] {
+    [equalized] {
+      min-height: 100%;
+      justify-content: center !important;
+      align-content: center !important;
+    }
+    [width-100] {
+      &[menu-header] {
+        text-align: center;
+        font-size: 2em;
+        padding: 10px 0;
+        max-width: 70%;
+        margin: 0 auto;
+      }
+    }
+    [ion-button] {
+      height: 110px;
+      font-size: 1.8em;
+
+      span.button-inner {
+        display: block;
+        margin-top: 25px;
+
+        .text {
+          display: block;
+        }
+        .number {
+          display: block;
+          margin-top: 12px;
+          font-size: 1em;
+        }
+      }
+    } // [ion-button]
+  } // [xela]
+
+  ion-toolbar {
+    text-align: center;
+
+    [ion-button] {
+      font-size: 1.6em;
+      &:last-child {
+        margin-left: 50px;
+      }
+      &:first-child {
+        margin-right: 50px;
+      }
+    }
+  }
+
+  $start_sec: 0;
+  $floating_point: '.';
+  @for $i from 1 through 5 {
+    .animated:nth-child(#{$i}) {
+      animation-delay: #{$start_sec}#{$floating_point}#{$i}s !important;
+      animation-duration: 1s !important;
+      // -vendor-animation-iteration-count: infinite !important;
+    }
+    @if $i == 9 {
+      $start_sec: 1;
+    }
+  }
+
+}
