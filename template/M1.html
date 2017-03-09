@@ -1,0 +1,34 @@
+<unit id="{{placeholder_unit_id}}" audio-1="{{placeholder_pre_audio}}" audio-2="{{placeholder_audio}}" *ngIf="unitID == '{{placeholder_unit_id}}'" unit-next="{{placeholder_next}}">
+  <ion-grid unit-view>
+    <ion-row unit-view-head wrap>
+      <ion-col width-100 [attr.triggerState]="triggerState" *ngIf="isAnimateAllow"> <ion-icon class="animated fadeIn" name="help"></ion-icon> <ion-icon class="animated flip" name="happy"></ion-icon> <ion-icon class="animated flip" name="sad"></ion-icon> </ion-col>
+      <ion-col width-100 *ngIf="!isAnimateAllow">
+        <ion-card>
+          <img [src]="imagePath+'{{placeholder_audio_image}}'">
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row class="animated fadeIn" unit-view-options two-by-two borderless [attr.animateOn]="animateOn" wrap choice-correct-answer="Training Message Q1.mp3" choice-wrong-answer="Training Message Q1.mp3">
+      <ion-col width-50>
+        <button ion-button block color-1 choice-1-audio="wrong.mp3" (click)="trigger(3, 1)">
+          មានផ្កា
+        </button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block color-2 choice-2-audio="wrong.mp3" (click)="trigger(3, 2)">
+          មានសំបកការពារ គ្រាប់
+        </button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block color-3 choice-3-audio="correct.mp3" (click)="trigger(3, 3)">
+          មានគ្រាប់ននល
+        </button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block color-4 choice-4-audio="wrong.mp3" (click)="trigger(3, 4)">
+          គ្មានបាច់សរសៃនាំ
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</unit>

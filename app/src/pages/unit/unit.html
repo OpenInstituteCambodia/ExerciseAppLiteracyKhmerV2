@@ -21,7 +21,7 @@
           </ion-card>
         </ion-col>
       </ion-row>
-      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless wrap choice-correct-answer="Training Message Q1.mp3" choice-wrong-answer="Training Message Q1.mp3">
+      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless [attr.animateOn]="animateOn" wrap choice-correct-answer="Training Message Q1.mp3" choice-wrong-answer="Training Message Q1.mp3">
         <ion-col width-50>
           <button ion-button block color-1 choice-1-audio="wrong.mp3" (click)="trigger(3, 1)">
             មានផ្កា
@@ -56,7 +56,7 @@
           </ion-card>
         </ion-col>
       </ion-row>
-      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless wrap choice-correct-answer="Training Message Q2.mp3" choice-wrong-answer="Training Message Q2.mp3">
+      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless [attr.animateOn]="animateOn" wrap choice-correct-answer="Training Message Q2.mp3" choice-wrong-answer="Training Message Q2.mp3">
         <ion-col width-50>
           <button ion-button block color-1 choice-1-audio="wrong.mp3" (click)="trigger(2, 1)">
             ប្រង់
