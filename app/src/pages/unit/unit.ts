@@ -4,6 +4,7 @@ import { NativeAudio } from 'ionic-native';
 import { HelperPage } from '../helper/helper';
 
 import { BaseController } from '../../components/base';
+import { DebugController } from '../../components/debug';
 
 @Component({
   selector: 'page-unit',
@@ -34,7 +35,8 @@ export class UnitPage {
   // The following Function can be editable
   // --------------------------------------
     private replayButtonClick() {
-      this.startUnitIntro();
+      // this.startUnitIntro();
+      this.navCtrl.push(DebugController);
     }
 
     private trigger(correct, choice) {
