@@ -45,39 +45,39 @@ import { UnitPage } from '../pages/unit/unit';
 
       <ion-item-group *ngIf="debugInterface == 'unit'">
         <ion-item-divider color="light">
-          <h1>Unit ID: {{content['unit_id']}}</h1>
+          <h1>Unit ID: {{unitContent['unit_id']}}</h1>
         </ion-item-divider>
           <ion-item>
-            Audio 1: {{content['audio_1']}}
+            Audio 1: {{unitContent['audio_1']}}
           </ion-item>
           <ion-item>
-            Audio 2: {{content['audio_2']}}
+            Audio 2: {{unitContent['audio_2']}}
           </ion-item>
 
         <ion-item-divider color="light">
-          <h2>Correct/Wrong Audio:</h2>
+          Correct/Wrong Audio:
         </ion-item-divider>
           <ion-item>
-            Correct Audio: {{content['answer_correct_audio']}}
+            Correct Audio: {{unitContent['answer_correct_audio']}}
           </ion-item>
           <ion-item>
-            Wrong Audio: {{content['answer_wrong_audio']}}
+            Wrong Audio: {{unitContent['answer_wrong_audio']}}
           </ion-item>
 
         <ion-item-divider color="light">
-          <h2>Choices Audio:</h2>
+          Choices Audio:
         </ion-item-divider>
           <ion-item>
-            Choice 1: {{content['choice_1_audio']}}
+            Choice 1: {{unitContent['choice_1_audio']}}
           </ion-item>
           <ion-item>
-            Choice 2: {{content['choice_2_audio']}}
+            Choice 2: {{unitContent['choice_2_audio']}}
           </ion-item>
           <ion-item>
-            Choice 3: {{content['choice_3_audio']}}
+            Choice 3: {{unitContent['choice_3_audio']}}
           </ion-item>
           <ion-item>
-            Choice 4: {{content['choice_4_audio']}}
+            Choice 4: {{unitContent['choice_4_audio']}}
           </ion-item>
       </ion-item-group>
 
@@ -86,11 +86,18 @@ import { UnitPage } from '../pages/unit/unit';
 })
 export class DebugController {
 
-  private debugInterface = 'menu';
+  private debugInterface: string;
   private debugHistory: Array<any>;
+
+  private unitContent: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.initDebugData();
+    this.debugInterface = this.navParams.get('debugInterface');
+
+    if (this.navParams.get('unitContent')) {
+      this.unitContent = this.navParams.get('unitContent');
+    }
   }
 
   ionViewDidLoad() {

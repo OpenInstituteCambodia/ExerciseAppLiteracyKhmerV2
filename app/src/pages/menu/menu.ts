@@ -71,6 +71,10 @@ export class MenuPage {
   }
 
   private toggleDebug() {
-    this.navCtrl.push(DebugController);
+    this.navCtrl.push(
+      DebugController, {
+        debugInterface: 'menu'
+      }
+    );
   }
 }

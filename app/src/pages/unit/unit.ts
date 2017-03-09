@@ -201,7 +201,12 @@ export class UnitPage {
   }
 
   private toggleDebug() {
-    this.navCtrl.push(DebugController);
+    this.navCtrl.push(
+      DebugController, {
+        debugInterface: 'unit',
+        unitContent: this.content
+      }
+    );
   }
 
 }
