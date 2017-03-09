@@ -12,7 +12,7 @@ import { UnitPage } from '../pages/unit/unit';
           <ion-icon name="close"></ion-icon>
         </button>
         <ion-title>Debugging</ion-title>
-        <ion-buttons end>
+        <ion-buttons end *ngIf="debugInterface != 'unit'">
           <button ion-button icon-only (click)="clearHistory()">
             <ion-icon name="refresh"></ion-icon>
           </button>

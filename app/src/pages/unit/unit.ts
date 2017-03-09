@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Platform, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { NativeAudio,IsDebug } from 'ionic-native';
 import { HelperPage } from '../helper/helper';
 
@@ -27,7 +27,7 @@ export class UnitPage {
   private triggerEnable = false;
 
   private MediaPlayer = new BaseController();
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public modalCtrl: ModalController) {
     this.unitID = this.navParams.get('unitID');
     typeof this.navParams.get('unitTitle') != 'undefined' ? this.unitTitle = this.navParams.get('unitTitle') : '';
   }
@@ -201,23 +201,17 @@ export class UnitPage {
   }
 
   private toggleDebug() {
+    let debugModal = this.modalCtrl.create(DebugController, {
+      debugInterface: 'unit',
+      unitContent: this.content
+    });
     IsDebug.getIsDebug().then((isDebug) => {
       if (isDebug) {
-        this.navCtrl.push(
-          DebugController, {
-            debugInterface: 'unit',
-            unitContent: this.content
-          }
-        );
+        debugModal.present();
       }
     }).catch((err) => {
       if (err == 'cordova_not_available') {
-        this.navCtrl.push(
-          DebugController, {
-            debugInterface: 'unit',
-            unitContent: this.content
-          }
-        );
+        debugModal.present();
       }else {
         console.log('toggleDebug(): Something went wrong,', err);
       }
