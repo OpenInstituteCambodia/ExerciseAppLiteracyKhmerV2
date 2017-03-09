@@ -28,13 +28,16 @@ import { NavController, NavParams } from 'ionic-angular';
             <ion-input #routeID type="text"></ion-input>
           </ion-item>
           <div padding>
-            <button ion-button block (click)="route(routeID)">Go</button>
+            <button ion-button block (click)="go(routeID.value)">Go</button>
           </div>
         </ion-item-group>
         <ion-item-group>
           <ion-item-divider color="light">History</ion-item-divider>
-          <ion-item (click)="route('C1L1Q1')">
-            C1L1Q1
+          <ion-item *ngFor="let item of debugHistory; let i = index" (click)="route(item)">
+            {{item}}
+          </ion-item>
+          <ion-item *ngIf="!debugHistory.length > 0">
+            No History Log Available
           </ion-item>
         </ion-item-group>
       </div>
@@ -83,15 +86,32 @@ import { NavController, NavParams } from 'ionic-angular';
 export class DebugController {
 
   private debugInterface = 'menu';
+  private debugHistory: Array<any> = [
+    "C1L1Q1",
+    "C1L1Q2",
+    "C1L1Q3",
+    "C1L1Q4",
+    "C1L1Q5"
+  ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DebugPage');
+    console.log('%c!! Debugging Mode Triggered !!', 'font-size: 18px; color: red;');
+    let storage = window.localStorage;
+  }
+
+  private go(id){
+    this.route(id);
+    this.saveHistory(id);
   }
 
   private route(id){
-    console.log(id);
+    console.log('Render new debugHistory', this.debugHistory);
+  }
+
+  private saveHistory(id) {
+    this.debugHistory.push(id);
   }
 
 }
