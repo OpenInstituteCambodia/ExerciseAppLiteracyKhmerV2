@@ -13,9 +13,9 @@ export class UnitPage {
   // The following Variable can be editable
   // --------------------------------------
   /* Delay in milliseconds */ private delay = 500;
-  /* Enable Animation Mode */ private isAnimateAllow = true;
+  /* Enable Animation Mode */ private isAnimateAllow = false;
   /* Delay Animation in milliseconds*/ private AnimateDelay = 500;
-  /* Enable Helper Display Mode */ private isHelperAllow = true;
+  /* Enable Helper Display Mode */ private isHelperAllow = false;
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
