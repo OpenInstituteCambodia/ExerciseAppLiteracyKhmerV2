@@ -29,7 +29,7 @@ import { UnitPage } from '../pages/unit/unit';
             <ion-input #routeID type="text" id="routeID"></ion-input>
           </ion-item>
           <div padding>
-            <button ion-button block (click)="go(routeID)">Go</button>
+            <button ion-button block (click)="go(routeID.value)">Go</button>
           </div>
         </ion-item-group>
         <ion-item-group>
@@ -106,12 +106,9 @@ export class DebugController {
     }
   }
 
-  private go(element){
-
-    this.saveHistory(element.value);
-    this.route(element.value);
-
-    element.value = null; // Clear Input after saveHistory
+  private go(id){
+    this.saveHistory(id);
+    this.route(id);
   }
 
   private route(id){
