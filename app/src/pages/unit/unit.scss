@@ -43,6 +43,13 @@ page-unit {
               font-size: 4em;
             }
           }
+
+          &[animateOn] {
+            &[animateOn="1"] {}
+            &[animateOn="2"] {}
+            &[animateOn="3"] {}
+            &[animateOn="4"] {}
+          }
         } // &[two-by-two]
 
         &[one-by-four] {
@@ -159,5 +166,10 @@ page-unit {
       ion-icon[name="sad"] {}
     }
   }
+
+}
+
+
+@keyframes twoBytwoAnimate {
 
 }
