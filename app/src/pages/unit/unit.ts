@@ -16,7 +16,7 @@ export class UnitPage {
   /* Delay in milliseconds */ private delay = 500;
   /* Enable Animation Mode */ private isAnimateAllow = false;
   /* Delay Animation in milliseconds*/ private AnimateDelay = 500;
-  /* Enable Helper Display Mode */ private isHelperAllow = true;
+  /* Enable Helper Display Mode */ private isHelperAllow = false;
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
@@ -27,6 +27,7 @@ export class UnitPage {
   private triggerEnable = false;
   private debugState = false;
   private imagePath: string;
+  private animateOn;
 
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public modalCtrl: ModalController) {
@@ -54,6 +55,8 @@ export class UnitPage {
 
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
       correct == choice ? UnitNextAllow  = true : UnitNextAllow  = false;
+
+      this.animateOn = choice;
 
       setTimeout(() => {
         correct == choice ? this.triggerState = "happy" : this.triggerState = "sad";
