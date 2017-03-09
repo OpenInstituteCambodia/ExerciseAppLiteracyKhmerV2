@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Platform, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { NativeAudio } from 'ionic-native';
 import { MenuPage } from '../menu/menu';
 import { UnitPage } from '../unit/unit';
@@ -18,7 +18,7 @@ export class HelperPage {
   private playURI;
 
   private MediaPlayer = new BaseController();
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public toastCtrl: ToastController) {
     this.unitID = this.navParams.get('unitID');
     this.unitNextID = this.navParams.get('unitNextID');
     this.isUnitNextAllow = this.navParams.get('isUnitNextAllow');
@@ -107,6 +107,14 @@ export class HelperPage {
       ]
     });
     alert.present();
+  }
+
+  private toggleDebug() {
+    let toast = this.toastCtrl.create({
+      message: 'Debugging is not available for this page!',
+      duration: 3000
+    });
+    toast.present();
   }
 
 }

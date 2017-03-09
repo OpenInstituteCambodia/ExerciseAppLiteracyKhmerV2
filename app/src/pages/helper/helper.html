@@ -114,7 +114,7 @@
     <button ion-button clear (click)="replayButtonClick()">
       <ion-icon name="refresh"></ion-icon>
     </button>
-    <button ion-button clear (click)="exitButtonClick()">
+    <button ion-button clear (click)="exitButtonClick()" (press)="toggleDebug()">
       <ion-icon name="power"></ion-icon>
     </button>
   </ion-toolbar>
