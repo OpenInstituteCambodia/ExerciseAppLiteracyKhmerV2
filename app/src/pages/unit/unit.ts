@@ -16,7 +16,7 @@ export class UnitPage {
   /* Delay in milliseconds */ private delay = 500;
   /* Enable Animation Mode */ private isAnimateAllow = false;
   /* Delay Animation in milliseconds*/ private AnimateDelay = 500;
-  /* Enable Helper Display Mode */ private isHelperAllow = false;
+  /* Enable Helper Display Mode */ private isHelperAllow = true;
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
