@@ -26,11 +26,15 @@ export class UnitPage {
   public triggerState = "help";
   private triggerEnable = false;
   private debugState = false;
+  private imagePath: string;
 
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public modalCtrl: ModalController) {
     this.unitID = this.navParams.get('unitID');
     typeof this.navParams.get('unitTitle') != 'undefined' ? this.unitTitle = this.navParams.get('unitTitle') : '';
+
+    let storage = window.localStorage;
+    this.imagePath = storage.getItem('imagePath');
   }
 
   // The following Function can be editable
