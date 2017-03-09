@@ -25,6 +25,7 @@ export class UnitPage {
   private content;
   public triggerState = "help";
   private triggerEnable = false;
+  private debugState = false;
 
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public modalCtrl: ModalController) {
@@ -36,7 +37,6 @@ export class UnitPage {
   // --------------------------------------
     private replayButtonClick() {
       this.startUnitIntro();
-
     }
 
     private trigger(correct, choice) {
@@ -146,8 +146,10 @@ export class UnitPage {
   }
 
   ionViewWillLeave() {
-    console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
-    this.MediaPlayer.stopSoundComplex();
+    if (this.debugState == false) {
+      console.log("ionViewWillLeave(): View is about to leave, Stopping current playback sound.");
+      this.MediaPlayer.stopSoundComplex();
+    }
   }
 
   private Q(parent, attr) {
@@ -201,6 +203,7 @@ export class UnitPage {
   }
 
   private toggleDebug() {
+    this.debugState = true;
     let debugModal = this.modalCtrl.create(DebugController, {
       debugInterface: 'unit',
       unitContent: this.content

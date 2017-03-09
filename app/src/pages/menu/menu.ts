@@ -18,6 +18,7 @@ export class MenuPage {
   // Please don't do stupid stuff out side of this area ;)
 
   public menuID;
+  private debugState = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public toastCtrl: ToastController, public modalCtrl: ModalController) {
     typeof this.navParams.get('menuID') == 'undefined' ? this.menuID = 'root' : this.menuID = this.navParams.get('menuID');
     typeof this.navParams.get('title') != 'undefined' ? this.menuTitle = this.navParams.get('title') : true;
@@ -72,6 +73,7 @@ export class MenuPage {
   }
 
   private toggleDebug() {
+    this.debugState = true;
     let debugModal = this.modalCtrl.create(DebugController, {
       debugInterface: 'menu'
     });
