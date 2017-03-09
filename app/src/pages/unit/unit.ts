@@ -177,12 +177,14 @@ export class UnitPage {
       case 'stage1': // hide other options
         this.hideAllExcept = option;
         break;
+
       case 'stage2': // expand current option
         this.animateOn = option;
-
         break;
+
       case 'stage3':
         break;
+
       case 'reset':
         this.hideAllExcept = null;
         this.animateOn = null;
