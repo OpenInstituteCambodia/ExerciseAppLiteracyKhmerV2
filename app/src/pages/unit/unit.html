@@ -11,35 +11,35 @@
 
 <ion-content unit-content>
 
-  <unit id="C1L1Q1" audio-1="Msg Question 1.mp3" audio-2="" *ngIf="unitID == 'C1L1Q1'" unit-next="C1L1Q2">
+  <unit id="C1L1Q1" audio-1="M1.mp3" audio-2="" *ngIf="unitID == 'C1L1Q1'" unit-next="C1L1Q2">
     <ion-grid unit-view>
       <ion-row unit-view-head wrap>
         <ion-col width-100 [attr.triggerState]="triggerState" *ngIf="isAnimateAllow"> <ion-icon class="animated fadeIn" name="help"></ion-icon> <ion-icon class="animated flip" name="happy"></ion-icon> <ion-icon class="animated flip" name="sad"></ion-icon> </ion-col>
         <ion-col width-100 *ngIf="!isAnimateAllow">
           <ion-card>
-            <img src="assets/files/images/C1L1Q1.jpg" alt="">
+            <img src="assets/files/images/L3.3P36.jpg" alt="">
           </ion-card>
         </ion-col>
       </ion-row>
-      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless [attr.animateOn]="animateOn" wrap choice-correct-answer="Training Message Q1.mp3" choice-wrong-answer="Training Message Q1.mp3">
+      <ion-row choice-correct-answer="correct.mp3" choice-wrong-answer="wrong.mp3" class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="hideAllExcept" [attr.animateOn]="animateOn" wrap>
         <ion-col width-50>
-          <button ion-button block color-1 choice-1-audio="wrong.mp3" (click)="trigger(3, 1)">
-            មានផ្កា
+          <button ion-button block color-1 choice-1-audio="L3P36_1.mp3" (click)="trigger(3, 1)">
+            ផែ
           </button>
         </ion-col>
         <ion-col width-50>
-          <button ion-button block color-2 choice-2-audio="wrong.mp3" (click)="trigger(3, 2)">
-            មានសំបកការពារ គ្រាប់
+          <button ion-button block color-2 choice-2-audio="L3P36_2.mp3" (click)="trigger(3, 2)">
+            ផៃ
           </button>
         </ion-col>
         <ion-col width-50>
-          <button ion-button block color-3 choice-3-audio="correct.mp3" (click)="trigger(3, 3)">
-            មានគ្រាប់ននល
+          <button ion-button block color-3 choice-3-audio="L3P36_3.mp3" (click)="trigger(3, 3)">
+            ផេះ
           </button>
         </ion-col>
         <ion-col width-50>
-          <button ion-button block color-4 choice-4-audio="wrong.mp3" (click)="trigger(3, 4)">
-            គ្មានបាច់សរសៃនាំ
+          <button ion-button block color-4 choice-4-audio="L3P36_4.mp3" (click)="trigger(3, 4)">
+            ថែ
           </button>
         </ion-col>
       </ion-row>
@@ -56,25 +56,25 @@
           </ion-card>
         </ion-col>
       </ion-row>
-      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless [attr.animateOn]="animateOn" wrap choice-correct-answer="Training Message Q2.mp3" choice-wrong-answer="Training Message Q2.mp3">
+      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="hideAllExcept" [attr.animateOn]="animateOn" wrap choice-correct-answer="Training Message Q2.mp3" choice-wrong-answer="Training Message Q2.mp3">
         <ion-col width-50>
           <button ion-button block color-1 choice-1-audio="wrong.mp3" (click)="trigger(2, 1)">
-            ប្រង់
+            ដំបៅ
           </button>
         </ion-col>
         <ion-col width-50>
           <button ion-button block color-2 choice-2-audio="correct.mp3" (click)="trigger(2, 2)">
-            កូនីភែ
+            បបរ
           </button>
         </ion-col>
         <ion-col width-50>
           <button ion-button block color-3 choice-3-audio="wrong.mp3" (click)="trigger(2, 3)">
-            គីងកូ
+            សរសរ
           </button>
         </ion-col>
         <ion-col width-50>
           <button ion-button block color-4 choice-4-audio="wrong.mp3" (click)="trigger(2, 4)">
-            ស៊ីណេតូភីត
+            ថៅកែ
           </button>
         </ion-col>
       </ion-row>
@@ -91,7 +91,7 @@
           </ion-card>
         </ion-col>
       </ion-row>
-      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless [attr.animateOn]="animateOn" wrap choice-correct-answer="Training Message Q3.mp3" choice-wrong-answer="Training Message Q3.mp3">
+      <ion-row class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="hideAllExcept" [attr.animateOn]="animateOn" wrap choice-correct-answer="Training Message Q3.mp3" choice-wrong-answer="Training Message Q3.mp3">
         <ion-col width-50>
           <button ion-button block color-1 choice-1-audio="Msg, if incorrect Q1.mp3" (click)="trigger(3, 1)">
             ប្រង់

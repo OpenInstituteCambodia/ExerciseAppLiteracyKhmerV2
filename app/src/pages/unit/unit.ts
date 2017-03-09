@@ -28,6 +28,7 @@ export class UnitPage {
   private debugState = false;
   private imagePath: string;
   private animateOn;
+  private hideAllExcept;
 
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public modalCtrl: ModalController) {
@@ -41,6 +42,7 @@ export class UnitPage {
   // The following Function can be editable
   // --------------------------------------
     private replayButtonClick() {
+      this.triggerAnimate('reset', 0);
       this.startUnitIntro();
     }
 
@@ -56,7 +58,7 @@ export class UnitPage {
       correct == choice ? statusURL = this.content['answer_correct_audio'] : statusURL = this.content['answer_wrong_audio'];
       correct == choice ? UnitNextAllow  = true : UnitNextAllow  = false;
 
-      this.animateOn = choice;
+      this.triggerAnimate('stage1', choice);
 
       setTimeout(() => {
         correct == choice ? this.triggerState = "happy" : this.triggerState = "sad";
@@ -64,6 +66,7 @@ export class UnitPage {
 
       this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
         console.log(stage1);
+        this.triggerAnimate('stage2', choice);
         return new Promise((h, n) => {
           setTimeout(() => {
             h('HelperPage: Is Enabled, navigating...');
@@ -167,6 +170,26 @@ export class UnitPage {
       arrtData = parentData.getAttribute(attr);
     }
     return arrtData;
+  }
+
+  private triggerAnimate(property, option) {
+    switch(property) {
+      case 'stage1': // hide other options
+        this.hideAllExcept = option;
+        break;
+      case 'stage2': // expand current option
+        this.animateOn = option;
+
+        break;
+      case 'stage3':
+        break;
+      case 'reset':
+        this.hideAllExcept = null;
+        this.animateOn = null;
+        break;
+
+    }
+    console.log("private triggerAnimate("+property+", "+option+") {}");
   }
 
   private backButtonClick(){
