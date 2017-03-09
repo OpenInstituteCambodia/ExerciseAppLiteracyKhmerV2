@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, PopoverController } from 'ionic-angular';
 
+import { UnitPage } from '../pages/unit/unit';
+
 @Component({
   selector: 'page-debug',
   template: `
@@ -114,6 +116,11 @@ export class DebugController {
 
   private route(id){
     console.log('Render new debugHistory', this.debugHistory);
+    this.navCtrl.push(
+      UnitPage, {
+        unitID: id
+      }
+    );
   }
 
   private saveHistory(id) {
