@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the Debug page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-debug',
   template: `
@@ -36,7 +30,7 @@ import { NavController, NavParams } from 'ionic-angular';
           <ion-item *ngFor="let item of debugHistory; let i = index" (click)="route(item)">
             {{item}}
           </ion-item>
-          <ion-item *ngIf="!debugHistory.length > 0">
+          <ion-item *ngIf="debugHistory.length == 0">
             No History Log Available
           </ion-item>
         </ion-item-group>
@@ -86,19 +80,20 @@ import { NavController, NavParams } from 'ionic-angular';
 export class DebugController {
 
   private debugInterface = 'menu';
-  private debugHistory: Array<any> = [
-    "C1L1Q1",
-    "C1L1Q2",
-    "C1L1Q3",
-    "C1L1Q4",
-    "C1L1Q5"
-  ];
+  private debugHistory: Array<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    let storage = window.localStorage;
+    if (storage.getItem('debugHistory') != '') {
+      this.debugHistory = storage.getItem('debugHistory').split(',');
+    }else{
+      this.debugHistory = [];
+    }
+    console.log('debugHistory Data', this.debugHistory);
+  }
 
   ionViewDidLoad() {
     console.log('%c!! Debugging Mode Triggered !!', 'font-size: 18px; color: red;');
-    let storage = window.localStorage;
   }
 
   private go(id){
@@ -111,7 +106,10 @@ export class DebugController {
   }
 
   private saveHistory(id) {
+    let storage = window.localStorage;
+
     this.debugHistory.push(id);
+    storage.setItem('debugHistory', this.debugHistory.toString());
   }
 
 }

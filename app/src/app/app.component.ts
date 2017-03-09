@@ -31,5 +31,10 @@ export class MyApp {
 
     storage.setItem('soundPath', this.config[0].sounds);
     storage.setItem('imagePath', this.config[0].images);
+
+    let debugHistoryType = typeof storage.getItem('debugHistory');
+    if (debugHistoryType == 'object') {
+      storage.setItem('debugHistory', '');
+    }
   }
 }
