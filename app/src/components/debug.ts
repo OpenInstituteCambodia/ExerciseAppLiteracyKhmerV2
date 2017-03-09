@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
 
 @Component({
   selector: 'page-debug',
@@ -10,6 +10,11 @@ import { NavController, NavParams } from 'ionic-angular';
           <ion-icon name="close"></ion-icon>
         </button>
         <ion-title>Debugging</ion-title>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="clearHistory()">
+            <ion-icon name="refresh"></ion-icon>
+          </button>
+        </ion-buttons>
       </ion-navbar>
     </ion-header>
 
@@ -19,10 +24,10 @@ import { NavController, NavParams } from 'ionic-angular';
           <ion-item-divider color="light">Route</ion-item-divider>
           <ion-item>
             <ion-label floating>Unit ID</ion-label>
-            <ion-input #routeID type="text"></ion-input>
+            <ion-input #routeID type="text" id="routeID"></ion-input>
           </ion-item>
           <div padding>
-            <button ion-button block (click)="go(routeID.value)">Go</button>
+            <button ion-button block (click)="go(routeID)">Go</button>
           </div>
         </ion-item-group>
         <ion-item-group>
@@ -83,22 +88,28 @@ export class DebugController {
   private debugHistory: Array<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    let storage = window.localStorage;
-    if (storage.getItem('debugHistory') != '') {
-      this.debugHistory = storage.getItem('debugHistory').split(',');
-    }else{
-      this.debugHistory = [];
-    }
-    console.log('debugHistory Data', this.debugHistory);
+    this.initDebugData();
   }
 
   ionViewDidLoad() {
     console.log('%c!! Debugging Mode Triggered !!', 'font-size: 18px; color: red;');
   }
 
-  private go(id){
-    this.route(id);
-    this.saveHistory(id);
+  private initDebugData() {
+    let storage = window.localStorage;
+    if (storage.getItem('debugHistory') != '') {
+      this.debugHistory = storage.getItem('debugHistory').split(',');
+    }else{
+      this.debugHistory = [];
+    }
+  }
+
+  private go(element){
+
+    this.saveHistory(element.value);
+    this.route(element.value);
+
+    element.value = null; // Clear Input after saveHistory
   }
 
   private route(id){
@@ -106,10 +117,29 @@ export class DebugController {
   }
 
   private saveHistory(id) {
-    let storage = window.localStorage;
 
-    this.debugHistory.push(id);
-    storage.setItem('debugHistory', this.debugHistory.toString());
+    if (id == '') {
+      return false;
+    }
+
+    let storage = window.localStorage;
+    if(this.debugHistory.indexOf(id) == -1) {
+      this.debugHistory.push(id);
+      storage.setItem('debugHistory', this.debugHistory.toString());
+    }
+
+    console.log('index of this id', this.debugHistory.indexOf(id));
+  }
+
+  private removeHistory(id) {
+
+  }
+
+  private clearHistory() {
+    let storage = window.localStorage;
+    this.debugHistory = [];
+    storage.setItem('debugHistory', '');
+    this.initDebugData();
   }
 
 }
