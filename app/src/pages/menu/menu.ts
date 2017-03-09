@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { IsDebug } from 'ionic-native';
 
 import { UnitPage } from '../unit/unit';
 import { DebugController } from '../../components/debug';
@@ -71,10 +72,24 @@ export class MenuPage {
   }
 
   private toggleDebug() {
-    this.navCtrl.push(
-      DebugController, {
-        debugInterface: 'menu'
+    IsDebug.getIsDebug().then((isDebug) => {
+      if (isDebug) {
+        this.navCtrl.push(
+          DebugController, {
+            debugInterface: 'menu'
+          }
+        );
       }
-    );
+    }).catch((err) => {
+      if (err == 'cordova_not_available') {
+        this.navCtrl.push(
+          DebugController, {
+            debugInterface: 'menu'
+          }
+        );  
+      }else {
+        console.log('toggleDebug(): Something went wrong,', err);
+      }
+    });
   }
 }

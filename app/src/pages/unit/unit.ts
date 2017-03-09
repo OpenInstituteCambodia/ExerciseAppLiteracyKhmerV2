@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform, NavController, NavParams, AlertController } from 'ionic-angular';
-import { NativeAudio } from 'ionic-native';
+import { NativeAudio,IsDebug } from 'ionic-native';
 import { HelperPage } from '../helper/helper';
 
 import { BaseController } from '../../components/base';
@@ -201,12 +201,27 @@ export class UnitPage {
   }
 
   private toggleDebug() {
-    this.navCtrl.push(
-      DebugController, {
-        debugInterface: 'unit',
-        unitContent: this.content
+    IsDebug.getIsDebug().then((isDebug) => {
+      if (isDebug) {
+        this.navCtrl.push(
+          DebugController, {
+            debugInterface: 'unit',
+            unitContent: this.content
+          }
+        );
       }
-    );
+    }).catch((err) => {
+      if (err == 'cordova_not_available') {
+        this.navCtrl.push(
+          DebugController, {
+            debugInterface: 'unit',
+            unitContent: this.content
+          }
+        );
+      }else {
+        console.log('toggleDebug(): Something went wrong,', err);
+      }
+    });
   }
 
 }
