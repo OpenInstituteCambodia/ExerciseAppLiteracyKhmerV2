@@ -41,9 +41,48 @@ page-unit {
             height: 50%;
             [ion-button] {
               height: 100%;
-              font-size: 4em;
+              font-size: 2.8em;
             }
           }
+
+          &[hideAllExcept] {
+            &[hideAllExcept="1"] {
+              ion-col:nth-child(2),
+              ion-col:nth-child(3),
+              ion-col:nth-child(4) {
+                opacity: 0;
+                transition: opacity 1s;
+                animation: twoBytwoAnimateOut 1s;
+              }
+            }
+            &[hideAllExcept="2"] {
+              ion-col:nth-child(1),
+              ion-col:nth-child(3),
+              ion-col:nth-child(4) {
+                opacity: 0;
+                transition: opacity 1s;
+                animation: twoBytwoAnimateOut 1s;
+              }
+            }
+            &[hideAllExcept="3"] {
+              ion-col:nth-child(1),
+              ion-col:nth-child(2),
+              ion-col:nth-child(4) {
+                opacity: 0;
+                transition: opacity 1s;
+                animation: twoBytwoAnimateOut 1s;
+              }
+            }
+            &[hideAllExcept="4"] {
+              ion-col:nth-child(1),
+              ion-col:nth-child(2),
+              ion-col:nth-child(3) {
+                opacity: 0;
+                transition: opacity 1s;
+                animation: twoBytwoAnimateOut 1s;
+              }
+            }
+          } // &[hideAllExcept] {}
 
           &[animateOn] {
             ion-col {
@@ -51,7 +90,7 @@ page-unit {
               padding: 0 15px;
               height: 100%;
               min-width: 100%;
-              animation: twoBytwoAnimate 1s ease;
+              animation: twoBytwoAnimateIn 1s ease;
             }
 
             &[animateOn="1"] {
@@ -98,7 +137,7 @@ page-unit {
                 display: none;
               }
             }
-          }
+          } // &[animateOn] {}
         } // &[two-by-two]
 
         &[one-by-four] {
@@ -219,13 +258,22 @@ page-unit {
 }
 
 
-@keyframes twoBytwoAnimate {
-  0% {
+@keyframes twoBytwoAnimateIn {
+  from {
     height: 50%;
     min-width: 50%;
   }
-  100% {
+  to {
     height: 100%;
     min-width: 100%;
+  }
+}
+
+@keyframes twoBytwoAnimateOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
