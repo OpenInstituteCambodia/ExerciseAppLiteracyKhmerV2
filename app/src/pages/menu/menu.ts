@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Platform, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+
 import { UnitPage } from '../unit/unit';
+import { DebugController } from '../../components/debug';
 
 @Component({
   selector: 'page-menu',
@@ -66,5 +68,9 @@ export class MenuPage {
       ]
     });
     alert.present();
+  }
+
+  private toggleDebug() {
+    this.navCtrl.push(DebugController);
   }
 }

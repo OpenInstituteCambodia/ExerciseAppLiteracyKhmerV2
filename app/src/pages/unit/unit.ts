@@ -35,8 +35,8 @@ export class UnitPage {
   // The following Function can be editable
   // --------------------------------------
     private replayButtonClick() {
-      // this.startUnitIntro();
-      this.navCtrl.push(DebugController);
+      this.startUnitIntro();
+
     }
 
     private trigger(correct, choice) {
@@ -198,6 +198,10 @@ export class UnitPage {
       ]
     });
     alert.present();
+  }
+
+  private toggleDebug() {
+    this.navCtrl.push(DebugController);
   }
 
 }
