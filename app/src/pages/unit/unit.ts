@@ -44,6 +44,16 @@ export class UnitPage {
   // The following Function can be editable
   // --------------------------------------
     private replayButtonClick() {
+      if(this.MediaPlayer.isSoundPlaying == true){
+        return false;
+      }
+      if (this.triggerEnable == false) {
+        return false;
+      }
+      if (this.isNextButtonVisible == true) {
+        return false;
+      }
+      
       this.triggerAnimate('reset', 0);
       this.startUnitIntro();
     }
@@ -52,6 +62,14 @@ export class UnitPage {
       if(this.MediaPlayer.isSoundPlaying == true){
         return false;
       }
+      if (this.triggerEnable == false) {
+        return false;
+      }
+      if (this.isNextButtonVisible == true) {
+        return false;
+      }
+
+      this.triggerEnable = false;
 
       let playbackURL = this.content['choice_'+choice+'_audio'];
       let statusURL;
@@ -84,7 +102,10 @@ export class UnitPage {
         }
       }).then((stage3) => {
         console.log(stage3);
-        correct == choice ? this.triggerAnimate('stage3', choice) : this.triggerAnimate('reset', choice);
+        setTimeout(() => {
+          correct == choice ? this.triggerAnimate('stage3', choice) : this.triggerAnimate('reset', choice);
+        }, 1000);
+        this.triggerEnable = true;
         if (this.isHelperAllow) {
           this.navCtrl.push(
             HelperPage, {
@@ -106,11 +127,12 @@ export class UnitPage {
         this.MediaPlayer.playSound('player1', this.content['audio_1'])
           .then((player1) => {
             console.log(player1);
+            this.triggerEnable = true;
             return this.MediaPlayer.playSound('player1', this.content['audio_2']);
           }).then((player2) => {
             console.log(player2);
           })
-        .catch((err) => { console.log(err); });
+        .catch((err) => { this.triggerEnable = true; console.log(err); });
       }, this.delay);
     }
   // --------------------------------------
