@@ -1,0 +1,38 @@
+<unit id="L1P12Q3" audio-1="M3.mp3" audio-2="" *ngIf="unitID == 'L1P12Q3'" unit-next="L1P12Q4" [attr.correctState]="isNextButtonVisible == true">
+  <ion-grid unit-view>
+    <ion-row unit-view-head wrap>
+      <ion-col width-100>
+        <h1>ចាប</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row [attr.isVisible]="isNextButtonVisible == true && isHelperAllow == false">
+      <ion-col width-100>
+        <button ion-button block color="secondary" (click)="unit('L1P12Q4')">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row choice-correct-answer="correct.mp3" choice-wrong-answer="wrong.mp3" class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="hideAllExcept" [attr.animateOn]="animateOn" wrap>
+      <ion-col width-50>
+        <button ion-button block color-1 choice-1-audio="L1P12_5.mp3" (click)="trigger(1, 1)">
+          កាំ
+        </button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block color-2 choice-2-audio="L1P12_6.mp3" (click)="trigger(1, 2)">
+          កី
+        </button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block color-3 choice-3-audio="L1P12_7.mp3" (click)="trigger(1, 3)">
+          កា
+        </button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block color-4 choice-4-audio="L1P12_4.mp3" (click)="trigger(1, 4)">
+          ខែ
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</unit>
