@@ -13,7 +13,7 @@ export class MenuPage {
 
   // The following Variable can be editable
   // --------------------------------------
-  /* Main Menu Title */ public menuTitle = 'ជីវវិទ្យា​ ថ្នាក់​ទី​១២';
+  /* Main Menu Title */ public menuTitle = 'Exercise App Literacy Khmer';
   // --------------------------------------
   // Please don't do stupid stuff out side of this area ;)
 
