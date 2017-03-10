@@ -11,42 +11,159 @@
 
 <ion-content unit-content>
 
-  <unit id="L1L1Q1" audio-1="M1.mp3" audio-2="" *ngIf="unitID == 'L1L1Q1'" unit-next="L1L1Q2" [attr.correctState]="isNextButtonVisible == true">
+  <unit id="L1P12Q1" audio-1="M1.mp3" audio-2="" *ngIf="unitID == 'L1P12Q1'" unit-next="L1L1Q2" [attr.correctState]="isNextButtonVisible == true">
     <ion-grid unit-view>
       <ion-row unit-view-head wrap>
         <ion-col width-100 [attr.triggerState]="triggerState" *ngIf="isAnimateAllow"> <ion-icon class="animated fadeIn" name="help"></ion-icon> <ion-icon class="animated flip" name="happy"></ion-icon> <ion-icon class="animated flip" name="sad"></ion-icon> </ion-col>
         <ion-col width-100 *ngIf="!isAnimateAllow">
           <ion-card>
-            <img src="assets/files/images/L3.3P36.jpg" alt="">
+            <img src="assets/files/images/L1.2P12.jpg" alt="">
           </ion-card>
         </ion-col>
       </ion-row>
       <ion-row [attr.isVisible]="isNextButtonVisible == true && isHelperAllow == false">
         <ion-col width-100>
-          <button ion-button block color="secondary">
+          <button ion-button block color="secondary" (click)="unit('L1P12Q2')">
             <ion-icon name="arrow-forward"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
       <ion-row choice-correct-answer="correct.mp3" choice-wrong-answer="wrong.mp3" class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="hideAllExcept" [attr.animateOn]="animateOn" wrap>
         <ion-col width-50>
-          <button ion-button block color-1 choice-1-audio="L3P36_1.mp3" (click)="trigger(3, 1)">
-            ផែ
+          <button ion-button block color-1 choice-1-audio="L1P12_2.mp3" (click)="trigger(2, 1)">
+            ខំ
           </button>
         </ion-col>
         <ion-col width-50>
-          <button ion-button block color-2 choice-2-audio="L3P36_2.mp3" (click)="trigger(3, 2)">
-            ផៃ
+          <button ion-button block color-2 choice-2-audio="L1P12_1.mp3" (click)="trigger(2, 2)">
+            ខោ
           </button>
         </ion-col>
         <ion-col width-50>
-          <button ion-button block color-3 choice-3-audio="L3P36_3.mp3" (click)="trigger(3, 3)">
-            ផេះ
+          <button ion-button block color-3 choice-3-audio="L1P12_4.mp3" (click)="trigger(2, 3)">
+            ខែ
           </button>
         </ion-col>
         <ion-col width-50>
-          <button ion-button block color-4 choice-4-audio="L3P36_4.mp3" (click)="trigger(3, 4)">
-            ថែ
+          <button ion-button block color-4 choice-4-audio="L1P12_3.mp3" (click)="trigger(2, 4)">
+            ឆា
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
+
+  <unit id="L1P12Q2" audio-1="M2.mp3" audio-2="L1P12_5.mp3" *ngIf="unitID == 'L1P12Q2'" unit-next="L1L1Q3" [attr.correctState]="isNextButtonVisible == true">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100>
+          <ion-icon class="animated fadeIn" name="help"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row [attr.isVisible]="isNextButtonVisible == true && isHelperAllow == false">
+        <ion-col width-100>
+          <button ion-button block color="secondary" (click)="unit('L1P12Q3')">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row choice-correct-answer="correct.mp3" choice-wrong-answer="wrong.mp3" class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="hideAllExcept" [attr.animateOn]="animateOn" wrap>
+        <ion-col width-50>
+          <button ion-button block color-1 choice-1-audio="L1P12_5.mp3" (click)="trigger(1, 1)">
+            កាំ
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-2 choice-2-audio="L1P12_6.mp3" (click)="trigger(1, 2)">
+            កី
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-3 choice-3-audio="L1P12_7.mp3" (click)="trigger(1, 3)">
+            កា
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-4 choice-4-audio="L1P12_4.mp3" (click)="trigger(1, 4)">
+            ខែ
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
+
+  <unit id="L1P12Q3" audio-1="M3.mp3" audio-2="" *ngIf="unitID == 'L1P12Q3'" unit-next="L1P20Q1" [attr.correctState]="isNextButtonVisible == true">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100>
+          <h1>ចាប</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row [attr.isVisible]="isNextButtonVisible == true && isHelperAllow == false">
+        <ion-col width-100>
+          <button ion-button block color="secondary" (click)="unit('L1P20Q1')">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row choice-correct-answer="correct.mp3" choice-wrong-answer="wrong.mp3" class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="hideAllExcept" [attr.animateOn]="animateOn" wrap>
+        <ion-col width-50>
+          <ion-card choice-1-audio="L1P12_1.mp3" (click)="trigger(4, 1)" style="background: url('assets/files/images/L1.2P12.jpg')">
+            <!-- <img src=""/> -->
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card choice-1-audio="L1P12_3.mp3" (click)="trigger(4, 1)" style="background: url('assets/files/images/L1.4P12.jpg')">
+            <!-- <img src="assets/files/images/L1.4P12.jpg"/> -->
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card choice-1-audio="L1P12_7.mp3" (click)="trigger(4, 1)" style="background: url('assets/files/images/L1.1P12.jpg')">
+            <!-- <img src="assets/files/images/L1.1P12.jpg"/> -->
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card choice-1-audio="L1P12_8.mp3" (click)="trigger(4, 1)" style="background: url('assets/files/images/L1.3P12.jpg')">
+            <!-- <img src="assets/files/images/L1.3P12.jpg"/> -->
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </unit>
+
+  <unit id="L1P20Q1" audio-1="M3.mp3" audio-2="" *ngIf="unitID == 'L1P20Q1'" unit-next="L1P20Q2" [attr.correctState]="isNextButtonVisible == true">
+    <ion-grid unit-view>
+      <ion-row unit-view-head wrap>
+        <ion-col width-100>
+          <h1>ជី</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row [attr.isVisible]="isNextButtonVisible == true && isHelperAllow == false">
+        <ion-col width-100>
+          <button ion-button block color="secondary" (click)="unit('L1P20Q2')">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row choice-correct-answer="correct.mp3" choice-wrong-answer="wrong.mp3" class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="hideAllExcept" [attr.animateOn]="animateOn" wrap>
+        <ion-col width-50>
+          <button ion-button block color-1 choice-1-audio="L1P20_1.mp3" (click)="trigger(2, 1)">
+            សារ
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-2 choice-2-audio="L1P20_2.mp3" (click)="trigger(2, 2)">
+            តា
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-3 choice-3-audio="L1P20_3.mp3" (click)="trigger(2, 3)">
+            នឿ
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-4 choice-4-audio="L1P20_10.mp3" (click)="trigger(2, 4)">
+            អត់
           </button>
         </ion-col>
       </ion-row>

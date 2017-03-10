@@ -43,6 +43,15 @@ export class UnitPage {
 
   // The following Function can be editable
   // --------------------------------------
+
+    private unit(id) {
+      this.navCtrl.push(
+        UnitPage, {
+          unitID: id
+        }
+      );
+    }
+
     private replayButtonClick() {
       if(this.MediaPlayer.isSoundPlaying == true){
         return false;
@@ -53,7 +62,7 @@ export class UnitPage {
       if (this.isNextButtonVisible == true) {
         return false;
       }
-      
+
       this.triggerAnimate('reset', 0);
       this.startUnitIntro();
     }

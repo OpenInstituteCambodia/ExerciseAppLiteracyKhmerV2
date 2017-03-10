@@ -30,6 +30,12 @@ page-unit {
           color: #555;
           margin-top: 10%;
         }
+
+        h1 {
+          font-size: 6em;
+          margin-top: 20%;
+          color: #333;
+        }
       }
       [unit-view-options] {
         height: 50%;
@@ -42,7 +48,16 @@ page-unit {
             [ion-button] {
               height: 100%;
               font-size: 2.8em;
+
             }
+
+            ion-card {
+              height: 100%;
+              background-size: contain !important;
+              background-repeat: no-repeat !important;
+              background-position: center !important;
+            }
+
           }
 
           &[hideAllExcept] {
