@@ -56,9 +56,9 @@ export class UnitPage {
       if(this.MediaPlayer.isSoundPlaying == true){
         return false;
       }
-      if (this.triggerEnable == false) {
-        return false;
-      }
+      // if (this.triggerEnable == false) {
+      //   return false;
+      // }
       if (this.isNextButtonVisible == true) {
         return false;
       }
@@ -71,9 +71,9 @@ export class UnitPage {
       if(this.MediaPlayer.isSoundPlaying == true){
         return false;
       }
-      if (this.triggerEnable == false) {
-        return false;
-      }
+      // if (this.triggerEnable == false) {
+      //   return false;
+      // }
       if (this.isNextButtonVisible == true) {
         return false;
       }
