@@ -84,7 +84,7 @@ export class UnitPage {
         }
       }).then((stage3) => {
         console.log(stage3);
-        correct == choice ? this.triggerAnimate('stage3', choice) : false;
+        correct == choice ? this.triggerAnimate('stage3', choice) : this.triggerAnimate('reset', choice);
         if (this.isHelperAllow) {
           this.navCtrl.push(
             HelperPage, {

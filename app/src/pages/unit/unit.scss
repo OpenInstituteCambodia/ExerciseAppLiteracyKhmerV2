@@ -232,7 +232,7 @@ page-unit {
       [unit-view-options] {
         [ion-button] {
           background-color: transparent !important;
-          transform: scale(2);
+          font-size: 6em !important;
           animation: reveal 1s linear;
         }
       }
@@ -323,12 +323,12 @@ page-unit {
 
 @keyframes reveal {
   from {
-    transform: scale(1);
+    font-size: 2.8em;
     background-color: transparent !important;
   }
   to {
     background-color: transparent !important;
-    transform: scale(2);
+    font-size: 6em;
   }
 }
 
