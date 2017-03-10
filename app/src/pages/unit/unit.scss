@@ -205,6 +205,40 @@ page-unit {
 
   }
 
+  [isVisible] {
+    &[isVisible="false"] {
+      display: none;
+      height: 0px;
+      transition: height 1s;
+    }
+    &[isVisible="true"] {
+      display: flex;
+      height: 25%;
+      margin: 0 10px;
+      transition: height 1s;
+      animation: isVisible 1s;
+      [ion-button] {
+        height: 80%;
+        font-size: 3em;
+        animation: 1s revealNextButton linear;
+        box-shadow: 0 8px 2px 0 rgba(0, 0, 0, 0.14), 0 6px 1px -2px rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.12);
+        transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+  }
+
+  [correctState] {
+    &[correctState="true"] {
+      [unit-view-options] {
+        [ion-button] {
+          background-color: transparent !important;
+          transform: scale(2);
+          animation: reveal 1s linear;
+        }
+      }
+    }
+  }
+
   [unit-footer] {
     ion-toolbar {
       text-align: center;
@@ -275,5 +309,39 @@ page-unit {
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes isVisible {
+  from {
+    height: 0;
+  }
+  to {
+    height: 25%;
+  }
+}
+
+@keyframes reveal {
+  from {
+    transform: scale(1);
+    background-color: transparent !important;
+  }
+  to {
+    background-color: transparent !important;
+    transform: scale(2);
+  }
+}
+
+@keyframes revealNextButton {
+  0% {
+    font-size: 0;
+    height: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+  70%, 100% {
+    height: 80%;
+    box-shadow: 0 8px 2px 0 rgba(0, 0, 0, 0.14), 0 6px 1px -2px rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.12);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }

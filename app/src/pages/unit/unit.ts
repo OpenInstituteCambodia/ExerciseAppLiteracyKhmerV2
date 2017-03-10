@@ -27,8 +27,10 @@ export class UnitPage {
   private triggerEnable = false;
   private debugState = false;
   private imagePath: string;
+
   private animateOn;
   private hideAllExcept;
+  private isNextButtonVisible;
 
   private MediaPlayer = new BaseController();
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private platform: Platform, public modalCtrl: ModalController) {
@@ -82,6 +84,7 @@ export class UnitPage {
         }
       }).then((stage3) => {
         console.log(stage3);
+        correct == choice ? this.triggerAnimate('stage3', choice) : false;
         if (this.isHelperAllow) {
           this.navCtrl.push(
             HelperPage, {
@@ -182,12 +185,18 @@ export class UnitPage {
         this.animateOn = option;
         break;
 
-      case 'stage3':
+      case 'stage3': // Show next button on correct
+        this.isNextButtonVisible = true;
+        break;
+
+      case 'stage4':
+
         break;
 
       case 'reset':
         this.hideAllExcept = null;
         this.animateOn = null;
+        this.isNextButtonVisible = null;
         break;
 
     }
