@@ -93,7 +93,7 @@ export class UnitPage {
         correct == choice ? this.triggerState = "happy" : this.triggerState = "sad";
       }, this.isHelperAllow == true ? this.AnimateDelay : 0);
 
-      this.MediaPlayer.playSound('choice', playbackURL).then((stage1) => {
+      this.MediaPlayer.playSound('playback1', playbackURL).then((stage1) => {
         console.log(stage1);
         this.triggerAnimate('stage2', choice);
         return new Promise((h, n) => {
@@ -107,7 +107,7 @@ export class UnitPage {
             h('HelperPage: Is Enabled, navigating...');
           });
         }else{
-          return this.MediaPlayer.playSound('choice', statusURL);
+          return this.MediaPlayer.playSound('playback2', statusURL);
         }
       }).then((stage3) => {
         console.log(stage3);
