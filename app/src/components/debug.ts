@@ -17,6 +17,11 @@ import { UnitPage } from '../pages/unit/unit';
             <ion-icon name="refresh"></ion-icon>
           </button>
         </ion-buttons>
+        <ion-buttons end *ngIf="debugInterface == 'unit'">
+          <button ion-button icon-only (click)="reloadApp()">
+            <ion-icon name="sync"></ion-icon>
+          </button>
+        </ion-buttons>
       </ion-navbar>
     </ion-header>
 
@@ -151,6 +156,10 @@ export class DebugController {
     this.debugHistory = [];
     storage.setItem('debugHistory', '');
     this.initDebugData();
+  }
+
+  private reloadApp() {
+    location.reload();
   }
 
 }
