@@ -7,19 +7,17 @@ import { UnitPage } from '../pages/unit/unit';
   selector: 'page-debug',
   template: `
     <ion-header>
-      <ion-navbar hideBackButton color="danger">
+      <ion-navbar  color="danger">
         <button ion-button icon-only menuToggle navPop>
           <ion-icon name="close"></ion-icon>
         </button>
         <ion-title>Debugging</ion-title>
-        <ion-buttons end *ngIf="debugInterface != 'unit'">
-          <button ion-button icon-only (click)="clearHistory()">
+        <ion-buttons end>
+          <button ion-button icon-only (click)="clearHistory()"  *ngIf="debugInterface != 'unit'">
             <ion-icon name="refresh"></ion-icon>
           </button>
-        </ion-buttons>
-        <ion-buttons end *ngIf="debugInterface == 'unit'">
-          <button ion-button icon-only (click)="reloadApp()">
-            <ion-icon name="sync"></ion-icon>
+          <button ion-button icon-only (click)="reloadApp()" *ngIf="debugInterface == 'unit'">
+          <ion-icon name="sync"></ion-icon>
           </button>
         </ion-buttons>
       </ion-navbar>
