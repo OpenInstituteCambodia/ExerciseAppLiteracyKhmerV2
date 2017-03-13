@@ -37,12 +37,10 @@ ion-app {
   max-width: 100%;
 }
 
-[ion-button] {
-  @each $color in $colors {
-    $i: index($colors, $color);
-    &[color-#{$i}] {
-      background-color: $color;
-      color: #222;
-    }
+@each $color in $colors {
+  $i: index($colors, $color);
+  &[color-#{$i}] {
+    background-color: $color;
+    color: #222;
   }
 }

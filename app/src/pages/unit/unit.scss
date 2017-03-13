@@ -39,7 +39,7 @@ page-unit {
       }
       [unit-view-options] {
         height: 50%;
-        padding: 0 15px;
+        padding: 5px 15px;
 
         &[two-by-two] {
           position: relative;
@@ -53,9 +53,12 @@ page-unit {
 
             ion-card {
               height: 100%;
+              padding: 10px;
+              margin: 0 auto;
               background-size: contain !important;
               background-repeat: no-repeat !important;
               background-position: center !important;
+              box-shadow: none;
             }
 
           }
