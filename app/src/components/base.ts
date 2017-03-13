@@ -46,10 +46,10 @@ export class BaseController {
           console.log('playSound(id, filename):Promise<any> {}: Playback finished: ', finished);
           let index = this.playbackURI.indexOf(id);
           this.playbackURI.splice(index, 1);
+          this.isSoundPlaying = false;
           return NativeAudio.unload(id);
         })
         .then((completed) => {
-          this.isSoundPlaying = false;
           resolve('playSound(id, filename):Promise<any> {}: Promise Resolved: ' + completed);
         })
       .catch((error) => {
