@@ -39,21 +39,21 @@ page-unit {
       }
       [unit-view-options] {
         height: 50%;
-        padding: 5px 15px;
+        padding: 0 15px;
 
         &[two-by-two] {
           position: relative;
           .col {
             height: 50%;
+            padding: 5px 0 !important;
             [ion-button] {
               height: 100%;
               font-size: 2.8em;
-
             }
 
             ion-card {
               height: 100%;
-              padding: 10px;
+              // padding: 10px;
               margin: 0 auto;
               background-size: contain !important;
               background-repeat: no-repeat !important;
