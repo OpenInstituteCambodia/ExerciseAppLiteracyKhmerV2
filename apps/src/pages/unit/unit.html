@@ -1,0 +1,107 @@
+<ion-header unit-header>
+  <ion-navbar hideBackButton>
+    <button ion-button icon-only menuToggle (click)="backButtonClick()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+
+    <ion-title></ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content unit-content>
+
+  <ion-grid unit-view>
+    <ion-row unit-view-head wrap>
+
+      <!-- M1/M2 Style -->
+        <ion-col width-100 *ngIf="unit.unit_style == 'M1' || unit.unit_style == 'M2'">
+          <ion-card>
+            <img [src]="_path_images+unit.unit_content" alt="">
+          </ion-card>
+        </ion-col>
+      <!-- End M1/M2 Style -->
+
+      <!-- M3/M4 -->
+        <ion-col width-100 *ngIf="unit.unit_style == 'M3' || unit.unit_style == 'M4'">
+          <h1>{{unit.unit_content}}</h1>
+        </ion-col>
+      <!-- End M3/M4 -->
+    </ion-row>
+
+    <!-- Next Button -->
+      <ion-row [attr.isVisible]="_isCorrect">
+        <ion-col width-100>
+          <button ion-button block color="secondary" (click)="navigate(unit.unit_next_id)">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    <!-- End Next Button -->
+
+    <!-- Choice M1/M2 -->
+      <ion-row wrap class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="_selectedTriggerIndex" [attr.animateOn]="_selectedTriggerIndex" *ngIf="unit.unit_style == 'M1' || unit.unit_style == 'M2' || unit.unit_style == 'M4'">
+        <ion-col width-50>
+          <button ion-button block color-1 (click)="trigger(1)">
+            {{unit.choice_1_content}}
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-2 (click)="trigger(2)">
+            {{unit.choice_2_content}}
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-3 (click)="trigger(3)">
+            {{unit.choice_3_content}}
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button block color-4 (click)="trigger(4)">
+            {{unit.choice_4_content}}
+          </button>
+        </ion-col>
+      </ion-row>
+    <!-- End Choice M1/M2 -->
+
+    <!-- Choice M3/M4 -->
+      <ion-row wrap class="animated fadeIn" unit-view-options two-by-two borderless [attr.hideAllExcept]="_selectedTriggerIndex" [attr.animateOn]="_selectedTriggerIndex" *ngIf="unit.unit_style == 'M3'">
+        <ion-col width-50 color-1 ion-card>
+          <ion-card (click)="trigger(1)">
+            <img [src]="_path_images+unit.choice_1_content" alt="">
+          </ion-card>
+        </ion-col>
+        <ion-col width-50 color-2 ion-card>
+          <ion-card (click)="trigger(2)">
+            <img [src]="_path_images+unit.choice_2_content" alt="">
+          </ion-card>
+        </ion-col>
+        <ion-col width-50 color-3 ion-card>
+          <ion-card (click)="trigger(3)">
+            <img [src]="_path_images+unit.choice_3_content" alt="">
+          </ion-card>
+        </ion-col>
+        <ion-col width-50 color-4 ion-card>
+          <ion-card (click)="trigger(4)">
+            <img [src]="_path_images+unit.choice_4_content" alt="">
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    <!-- End Choice M3/M4 -->
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer unit-footer>
+  <ion-toolbar>
+    <button ion-button clear (click)="backButtonClick()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <button ion-button clear (click)="replayButtonClick()">
+      <ion-icon name="refresh"></ion-icon>
+    </button>
+    <button ion-button clear (click)="exitButtonClick()" (press)="toggleDebug()">
+      <ion-icon name="power"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-footer>

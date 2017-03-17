@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{menu_title == '' ? app_name : menu_title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content xela>
+  <!-- ROOT -->
+    <ion-grid>
+      <ion-row wrap>
+        <ion-col width-50 *ngFor="let item of menus; let i = index;">
+          <!-- Menu Level 1 -->
+            <button ion-button block (click)="menu(item.unit_id, item.menu_text_large+' '+item.menu_text_small, item.menu_level, item.menu_group_id)" *ngIf="item.menu_level == 1">
+              <div class="text">{{item.menu_text_large}}</div>
+              <div class="number">{{item.menu_text_small}}</div>
+            </button>
+          <!-- End Menu Level 1 -->
+          <!-- Menu Level Child -->
+            <button ion-button block (click)="navigate(item.unit_id)" *ngIf="item.menu_level > 1">
+              <div class="text">{{item.menu_text_large}}</div>
+              <div class="number">{{item.menu_text_small}}</div>
+            </button>
+          <!-- End Menu Level Child -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!-- END ROOT -->
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button clear (click)="playButtonClick()">
+      <ion-icon name="play"></ion-icon>
+    </button>
+    <button ion-button clear (click)="exitButtonClick()">
+      <ion-icon name="power"></ion-icon>
+    </button>
+    <button ion-button clear (click)="toggleDebug()">
+      <ion-icon name="bug"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-footer>
