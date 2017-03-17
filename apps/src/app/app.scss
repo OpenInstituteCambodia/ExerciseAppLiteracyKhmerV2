@@ -1,0 +1,74 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+ion-col {
+  &[width-100] {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+// Splashscreen
+  [Splashscreen] {
+    ion-icon {
+      font-size: 5em;
+      animation: spin 3s linear infinite;
+    }
+
+    [middle] {
+      height: 100%;
+
+      .row {
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    [text] {
+      color: #555;
+      padding-left: 10px;
+      font-size: 3em;
+    }
+
+    &[hide="true"] {
+      animation: hide 0.5s linear;
+      opacity: 0.1;
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.1;
+    }
+  }
+// End Splashscreen
