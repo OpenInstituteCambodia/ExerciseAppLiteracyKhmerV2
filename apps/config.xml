@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="io.github.socheatsok78.selfinteractivevoiceresponse" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Self-InteractiveVoiceResponse</name>
-  <description>An awesome Ionic/Cordova app.</description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+<widget id="kh.org.open.sipar" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>លំហាត់​អក្ខរកម្ម​</name>
+  <description>លំហាត់​អក្ខរកម្ម​</description>
+  <author email="selfivr@self-ivr.org" href="http://self-ivr.org/">Open Institute</author>
   <content src="index.html"/>
   <access origin="*"/>
   <allow-navigation href="http://ionic.local/*"/>
-  <allow-navigation href="http://192.168.2.124:8100"/>
-  <allow-navigation href="http://192.168.43.227:8100"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
@@ -45,7 +43,7 @@
   <preference name="SplashShowOnlyFirstTime" value="false"/>
   <preference name="loadUrlTimeoutValue" value="500000"/>
   <preference name="AutoHideSplashScreen" value="false"/>
-  <preference name="ShowSplashScreenSpinner" value="true"/>
+  <preference name="ShowSplashScreenSpinner" value="false"/>
   <preference name="SplashScreenDelay" value="3000"/>
   <preference name="SplashScreen" value="screen"/>
   <feature name="StatusBar">
