@@ -13,7 +13,7 @@ import { DebugController } from '../../debug/debug';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-  public app_name = 'Biology for Grade 12';
+  public app_name = 'លំហាត់​អក្ខរកម្ម​';
   public menu_id: string = 'root';
   public menu_title: string = '';
   public menu_level: number = 1;
@@ -85,7 +85,7 @@ export class MenuPage {
   }
 
   private toggleDebug() {
-    this.navCtrl.push(DebugController);
+    // this.navCtrl.push(DebugController);
   }
 
   private exitButtonClick() {
