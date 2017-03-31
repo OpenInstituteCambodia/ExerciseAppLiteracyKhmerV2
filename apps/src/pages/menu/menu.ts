@@ -30,6 +30,9 @@ export class MenuPage {
     if(typeof this.navParams.get('menu_group_id') != 'undefined') {
       this.menu_group_id = this.navParams.get('menu_group_id');
     }
+    if(typeof this.navParams.get('menu_title') != 'undefined') {
+      this.menu_title = this.navParams.get('menu_title');
+    }
   }
 
   ionViewDidLoad() {
