@@ -25,11 +25,13 @@ export class UnitPage {
   }
 
   ionViewDidLoad() {
-    this.init();
+    setTimeout(() => {
+      this.init();
+    }, 700);
   }
 
   ionViewWillLeave() {
-    this._mediaplayer.stopSound('session');
+    // this._mediaplayer.stopSound('session');
   }
 
   private init() {
@@ -64,6 +66,8 @@ export class UnitPage {
   }
 
   private navigate(uri) {
+    this._mediaplayer.stopSound('session');
+    
     let pending = this.loadingCtrl.create({
       spinner: 'dots'
     });
