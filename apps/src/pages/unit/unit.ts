@@ -28,6 +28,10 @@ export class UnitPage {
     this.init();
   }
 
+  ionViewWillLeave() {
+    this._mediaplayer.stopSound('session');
+  }
+
   private init() {
     this._disableTrigger = true;
     this._mediaplayer.playSound(this.unit.unit_audio_1)
