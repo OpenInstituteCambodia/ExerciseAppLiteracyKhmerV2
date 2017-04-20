@@ -24,6 +24,14 @@ ion-col {
   }
 }
 
+ion-navbar {
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+}
+
+[textCenter] {
+  text-align: center;
+}
 
 // Splashscreen
   [Splashscreen] {

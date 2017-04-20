@@ -1,5 +1,5 @@
 # Exercise App Literacy Khmer
-Exercise App Literacy Khmer
+កម្មវិធី​អក្ខរកម្ម​សម្រាប់​កម្មការិនី
 
 ## Screenshot
 

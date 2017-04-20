@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{menu_title == '' ? app_name : menu_title }}</ion-title>
+    <ion-title textCenter *ngIf="menu_level == 1">{{menu_title == '' ? app_name : menu_title }}</ion-title>
+    <ion-title *ngIf="menu_level != 1">{{menu_title == '' ? app_name : menu_title }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -29,9 +30,9 @@
 
 <ion-footer>
   <ion-toolbar>
-    <button ion-button clear (click)="playButtonClick()">
+    <!-- <button ion-button clear (click)="playButtonClick()">
       <ion-icon name="play"></ion-icon>
-    </button>
+    </button> -->
     <button ion-button clear (click)="exitButtonClick()">
       <ion-icon name="power"></ion-icon>
     </button>
