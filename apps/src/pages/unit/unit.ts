@@ -81,6 +81,7 @@ export class UnitPage {
 
     if (uri == 'root') {
       this.navCtrl.popToRoot();
+      this.creditEnding();
     }else{
       this._db.executeSQL("SELECT * FROM units WHERE unit_id == '"+uri+"'", []).then((unitData) => {
         console.log(unitData.rows.item(0));
@@ -145,5 +146,21 @@ export class UnitPage {
     });
     alert.present();
   }
+
+  private creditEnding() {
+    let alert = this.alertCtrl.create({
+      title: 'អបអរសាទរ',
+      message: 'អ្នក​បាន​បញ្ចប់​រាល់​លំហាត់​ទាំង​អស់​ហើយ​!!!​',
+      buttons: [
+        {
+          text: "បិទ​",
+          role: 'cancel'
+        }
+      ]
+    });
+    alert.present();
+  }
+
+
 
 }
