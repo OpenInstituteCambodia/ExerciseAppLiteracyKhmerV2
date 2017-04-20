@@ -67,20 +67,26 @@ export class UnitPage {
 
   private navigate(uri) {
     this._mediaplayer.stopSound('session');
-    
+
     let pending = this.loadingCtrl.create({
       spinner: 'dots'
     });
     pending.present();
-    this._db.executeSQL("SELECT * FROM units WHERE unit_id == '"+uri+"'", []).then((unitData) => {
-      console.log(unitData.rows.item(0));
-      this.navCtrl.push(
-        UnitPage, {
-          data: unitData.rows.item(0)
-        }
-      );
-      pending.dismiss();
-    });
+
+    if (uri == 'root') {
+      this.navCtrl.popToRoot();
+    }else{
+      this._db.executeSQL("SELECT * FROM units WHERE unit_id == '"+uri+"'", []).then((unitData) => {
+        console.log(unitData.rows.item(0));
+        this.navCtrl.push(
+          UnitPage, {
+            data: unitData.rows.item(0)
+          }
+        );
+        pending.dismiss();
+      });
+    }
+
 
   }
 
