@@ -46,7 +46,10 @@ export class UnitPage {
         }
       }).then((audio_secondary) => {
         console.log(audio_secondary);
-        this._disableTrigger = false;
+        this._disableTrigger = false
+        return this._mediaplayer.stopSound('session');
+      }).then( (unload) => {
+        console.log(unload);
       }).catch( err => console.log(err));
   }
 
@@ -62,11 +65,14 @@ export class UnitPage {
         this.unit.choice_correct_id == index ? this._isCorrect = true : this._isCorrect = false;
         this.unit.choice_correct_id == index ? this._selectedTriggerIndex = index : this._selectedTriggerIndex = null;
         this._disableTrigger = false;
+        return this._mediaplayer.stopSound('session');
+      }).then( (unload) => {
+        console.log(unload);
       }).catch( err => console.log(err) );
   }
 
   private navigate(uri) {
-    this._mediaplayer.stopSound('session');
+    this._mediaplayer.stopSound('session').then( suc => console.log(suc) ).catch( err => console.log(err) );
 
     let pending = this.loadingCtrl.create({
       spinner: 'dots'
@@ -83,11 +89,9 @@ export class UnitPage {
             data: unitData.rows.item(0)
           }
         );
-        pending.dismiss();
       });
     }
-
-
+    pending.dismiss();
   }
 
   private backButtonClick(){
@@ -112,6 +116,7 @@ export class UnitPage {
 
   private replayButtonClick() {
     if (this._disableTrigger) { return false; }
+    this._mediaplayer.stopSound('session').then( suc => console.log(suc) ).catch( err => console.log(err) );
 
     // Replaying Unit
     this.init();
