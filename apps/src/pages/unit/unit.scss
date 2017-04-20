@@ -121,6 +121,8 @@ page-unit {
               height: 100%;
               min-width: 100%;
               animation: twoBytwoAnimateIn 1s ease;
+              font-size: 2.4em;
+              transition: font-size 1s;
             }
 
             &[animateOn="1"] {
