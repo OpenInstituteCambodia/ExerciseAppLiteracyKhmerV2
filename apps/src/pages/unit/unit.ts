@@ -58,7 +58,21 @@ export class UnitPage {
     if (this._isCorrect) { return false; }
     this._disableTrigger = true;
     this._selectedTriggerIndex = index;
-    this._mediaplayer.playSound(this.unit['choice_'+index+'_audio'])
+
+    let _temp_audio = this.unit['choice_'+index+'_audio'];
+    if (this.unit.unit_style == 'M4') {
+        if (this.unit.choice_correct_id == index) {
+            let _filenameArray = _temp_audio.split('.');
+            _filenameArray.splice(1, 0, '_correct');
+            _filenameArray.splice(2, 0, '.');
+            _filenameArray = _filenameArray.join('');
+            console.log(_filenameArray);
+            _temp_audio = _filenameArray;
+        }
+    }
+    // let _temp_audio = this.unit['choice_'+index+'_audio'];
+
+    this._mediaplayer.playSound(_temp_audio)
       .then((audio_primary) => {
         return this._mediaplayer.playSound(this.unit.choice_correct_id == index ? this.unit.choice_correct_audio : this.unit.choice_wrong_audio);
       }).then((audio_secondary) => {
