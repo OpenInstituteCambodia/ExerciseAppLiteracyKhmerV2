@@ -9,15 +9,10 @@ color() {
   # bg: 40 black, 41 red, 44 blue, 45 purple
 }
 
+BUILD_DATE=$(date '+%d%Y%s')
+
 color '36;1' "
-  SAGE Engine
+  Saving Applicaiton Build GUID
   -----------
-  Build Version: 0.1
-  Engine Version: 0.1
+  Build Version: $BUILD_DATE
 "
-
-cp -rf ./scripts/keystore/* ./platforms/android/
-
-cp ./database/appdata.db ./www/appdata.db
-
-sh ./scripts/version.sh
